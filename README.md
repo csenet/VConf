@@ -1,20 +1,25 @@
-# VConf
+# V会議
 
-## Build Setup
+VRアバターとして参加できるWeb会議アプリV会議のソースコードです。
+
+## セットアップ
 
 ```bash
-# install dependencies
+# yarnを入れてない場合はインストール
+$ npm install -g yarn
+
+# 必要なパッケージをインストール
 $ yarn install
 
-# serve with hot reload at localhost:3000
+# 開発用サーバを3000番で開く
 $ yarn dev
 
-# build for production and launch server
+# リリースビルドして起動する
 $ yarn build
 $ yarn start
 
-# generate static project
+# 静的サイトを生成する
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+詳細は [Nuxt.js docs](https://nuxtjs.org) を参照
