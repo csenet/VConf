@@ -1,46 +1,58 @@
 <template>
   <div class="container-fluid background">
-    <div class="container">
-      <div class="Mainbox">
-        <div class="text-center">
-          <h1>
-            <span>V</span>会議
-          </h1>
-          <p class="text-muted">
-            Make Your Conference More Fun!
-          </p>
-        </div>
-        <div class="text-explain">
-          <hr>V会議は
-          <br>バーチャルアバターで会議に参加できる
-          <br>新しいWeb会議システム
-        </div>
-        <hr>
-        <div class="form-group mb-2">
-          <label for="roomId">RoomID</label>
-          <input
-            id="roomId"
-            v-model="roomId"
-            type="text"
-            class="form-control"
-            placeholder="RoomID"
-          >
-        </div>
-        <div class="form-group">
-          <nuxt-link :to="{name:'chat',query:{room:roomId}}" class="btn btn-info">
-            会議を開始
-          </nuxt-link>
-        </div>
-        <small class="hoi">
-          RoomIDは自身で設定することも可能ですが
-          <br>セキュリティ上の観点から推奨しません
-        </small>
+    <div class="box">
+      <div class="title">
+        <h1>
+          <span>V</span>会議
+        </h1>
+        <p class="text-muted">
+          Make Your Conference More Fun!
+        </p>
+      </div>
+      <div class="explain">
+        V会議はバーチャルアバターで会議に参加できる
+        新しいWeb会議システムです！
+      </div>
+      <!-- 入力欄 -->
+      <hr>
+      <div class="form-group">
+        <label for="roomId">RoomID</label>
+        <input
+          id="roomId"
+          v-model="roomId"
+          type="text"
+          class="form-control"
+          placeholder="RoomID"
+          @keydown.enter="movePage"
+        >
+      </div>
+      <div class="form-group">
+        <nuxt-link :to="{name:'chat',query:{room:roomId}}" class="btn btn-info">
+          会議を開始
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
-<style>
-.Mainbox {
+<script>
+export default {
+  data () {
+    return {
+      roomId: 'test'
+    };
+  },
+  mounted () {
+    this.roomId = Math.random().toString(32).substring(2);
+  },
+  methods: {
+    movePage () {
+      location.href = '/chat?room=' + this.roomId;
+    }
+  }
+};
+</script>
+<style scoped>
+.box {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -50,30 +62,27 @@
   text-align: center;
   padding: 1.5rem 4rem;
   background: rgba(255, 255, 255, 0.5);
-  border: double 6px #58ffff44;
+  /* border: double 6px #e6b01d44; */
   border-radius: 10px;
   box-shadow: 8px 15px 40px #1a251a65 inset;
-  height: 35em;
-  overflow-y:  scroll;
+  height: auto;
 }
-.text-center h1 {
+
+.title h1 {
   font-size: 3rem;
   text-shadow: 6px 3px 5px silver;
   font-family: "Yu Mincho";
   font-weight: bold;
 }
-.text-center span {
+
+.title span {
   font-size: 5.5rem;
   font-family: "BIZ UDP明朝";
   font-weight: Bold;
   font-style: italic;
 }
-.text-muted {
-  font-size: 1.1rem;
-}
-.text-explain {
-  font-size: 1.0rem;
-}
+
+/* 背景 */
 .background {
   position: relative;
   height: 100vh;
@@ -102,15 +111,3 @@
   z-index: -1;
 }
 </style>
-<script>
-export default {
-  data () {
-    return {
-      roomId: 'test'
-    };
-  },
-  mounted () {
-    this.roomId = Math.random().toString(32).substring(2);
-  }
-};
-</script>
