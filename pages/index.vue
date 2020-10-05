@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     movePage () {
-      location.href = '/chat?room=' + this.roomId;
+      location.href = `/chat?room=${this.roomId}`;
     }
   }
 };
@@ -58,7 +58,8 @@ export default {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 30rem;
+  max-width: 30rem;
+  width:100vw;
   text-align: center;
   padding: 1.5rem 4rem;
   background: rgba(255, 255, 255, 0.5);
@@ -71,13 +72,13 @@ export default {
 .title h1 {
   font-size: 3rem;
   text-shadow: 6px 3px 5px silver;
-  font-family: "Yu Mincho";
+  font-family: "Yu Mincho",serif;
   font-weight: bold;
 }
 
 .title span {
   font-size: 5.5rem;
-  font-family: "BIZ UDP明朝";
+  font-family: "BIZ UDP明朝",serif;
   font-weight: Bold;
   font-style: italic;
 }
