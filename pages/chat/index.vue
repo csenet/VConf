@@ -1,16 +1,16 @@
 <template>
   <div class="container-fluid background">
-    <div class="container">
-      <setting
-        v-if="viewFlag"
-        ref="Setting"
-        :local-stream="localStream"
-        @close="closeWindows"
-        @changeModel="changeModel"
-        @changeBackground="changeBackground"
-      />
-      <div class="row">
-        <div class="col^6">
+    <setting
+      v-if="viewFlag"
+      ref="Setting"
+      :local-stream="localStream"
+      @close="closeWindows"
+      @changeModel="changeModel"
+      @changeBackground="changeBackground"
+    />
+    <div class="row">
+      <div class="col-6">
+        <div class="container">
           <div class="row">
             <tracker ref="Tracker" class="mt-3 mb-3" @axis="axis" @getAudioTrack="getAudioTrack" />
           </div>
@@ -50,9 +50,9 @@
             </div>
           </div>
         </div>
-        <div class="col-6 pt-3">
-          <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
-        </div>
+      </div>
+      <div class="col-3 pt-3 mx-auto">
+        <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
       </div>
     </div>
   </div>

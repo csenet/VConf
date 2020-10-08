@@ -71,27 +71,42 @@ function moveLimiterXYZ (axis, prev) {
   };
 }
 
-function bodyDegLimiter (bodyDeg) {
-  if (bodyDeg > 0.3) {
-    bodyDeg = 0.3;
-  } else if (bodyDeg < -0.3) {
-    bodyDeg = -0.3;
-  }
-  return bodyDeg;
-}
+const bodyStack = [];
 
-function moveLimiter (limit, difference, after, before) {
-  if (difference < limit * 2 || difference > 0.001) {
-    after = before;
-  } else if (after > before) {
-    after = before + limit;
+function bodyDegAverage (deg) {
+// 5回分の移動平均を取り，なめらかにする
+  let average = 0;
+  const a = 5;
+  if (bodyStack.length > a) {
+    bodyStack.shift();
+    bodyStack.push(deg);
+    for (let i = 0; i < bodyStack.length; i++) {
+      average += bodyStack[i];
+    }
+    average /= bodyStack.length;
+    bodyStack.pop();
+    bodyStack.push(average);
+
+    return average;
   } else {
-    after = before - limit;
+    bodyStack.push(deg);
+    return deg;
   }
-  return after;
 }
 
-function getMovingAverage (axis, stack) {
+function moveLimiter (difirence) {
+  const limit = 0.1;
+  if (Math.abs(difirence) > limit) {
+    if (difirence > 0) {
+      difirence += limit;
+    } else {
+      difirence -= limit;
+    }
+  }
+  return difirence;
+}
+
+function getMovingAverage (axis) {
   // 5回分の移動平均を取り，なめらかにする
   const averageAxis = {
     x: 0,
@@ -100,55 +115,55 @@ function getMovingAverage (axis, stack) {
   };
   const k = 5;
 
-  if (stack.length > k) {
+  if (global.stack.length > k) {
     // stack.shift();
     // stack.push(axis);
 
-    const limitX = Math.abs(stack[k - 2].x - stack[k - 3].x);
-    const limitY = Math.abs(stack[k - 2].y - stack[k - 3].y);
-    const limitZ = Math.abs(stack[k - 2].z - stack[k - 3].z);
+    const limitX = Math.abs(global.stack[k - 2].x - global.stack[k - 3].x);
+    const limitY = Math.abs(global.stack[k - 2].y - global.stack[k - 3].y);
+    const limitZ = Math.abs(global.stack[k - 2].z - global.stack[k - 3].z);
 
     const differenceX = Math.abs(
-      stack[k - 1].x - stack[k - 2].x
+      global.stack[k - 1].x - global.stack[k - 2].x
     );
     const differenceY = Math.abs(
-      stack[k - 1].y - stack[k - 2].y
+      global.stack[k - 1].y - global.stack[k - 2].y
     );
     const differenceZ = Math.abs(
-      stack[k - 1].z - stack[k - 2].z
+      global.stack[k - 1].z - global.stack[k - 2].z
     );
-    stack[k - 1].x = moveLimiter(
+    global.stack[k - 1].x = moveLimiter(
       limitX,
       differenceX,
-      stack[k - 1].x,
-      stack[k - 2].x
+      global.stack[k - 1].x,
+      global.stack[k - 2].x
     );
-    stack[k - 1].y = moveLimiter(
+    global.stack[k - 1].y = moveLimiter(
       limitY,
       differenceY,
-      stack[k - 1].y,
-      stack[k - 2].y
+      global.stack[k - 1].y,
+      global.stack[k - 2].y
     );
-    stack[k - 1].z = moveLimiter(
+    global.stack[k - 1].z = moveLimiter(
       limitZ,
       differenceZ,
-      stack[k - 1].z,
-      stack[k - 2].z
+      global.stack[k - 1].z,
+      global.stack[k - 2].z
     );
 
-    for (let i = 0; i < stack.length; i++) {
-      averageAxis.x += stack[i].x;
-      averageAxis.y += stack[i].y;
-      averageAxis.z += stack[i].z;
+    for (let i = 0; i < global.stack.length; i++) {
+      averageAxis.x += global.stack[i].x;
+      averageAxis.y += global.stack[i].y;
+      averageAxis.z += global.stack[i].z;
     }
-    averageAxis.x /= stack.length;
-    averageAxis.y /= stack.length;
-    averageAxis.z /= stack.length;
-    stack.pop();
-    stack.push(axis);
+    averageAxis.x /= global.stack.length;
+    averageAxis.y /= global.stack.length;
+    averageAxis.z /= global.stack.length;
+    global.stack.pop();
+    global.stack.push(axis);
     return averageAxis;
   } else {
-    stack.push(axis);
+    global.stack.push(axis);
     return axis;
   }
 }
@@ -156,6 +171,6 @@ function getMovingAverage (axis, stack) {
 export {
   maximumLimiter,
   moveLimiterXYZ,
-  bodyDegLimiter,
+  bodyDegAverage,
   getMovingAverage
 };

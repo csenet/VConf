@@ -51,6 +51,8 @@ import emotionClassifier from './emotionClassifier.js';
 import * as filter from './filter.js';
 import * as util from './utility.js';
 
+require('./global.js');
+
 // eslint-disable-next-line new-cap
 const clmTracker = new clm.tracker({
   faceDetection: {
@@ -65,63 +67,15 @@ classifier.init();
 export default {
   name: 'Tracker',
   data () {
-    let render,
-      tracker,
-      vid,
-      overlay,
-      overlayCC,
-      vidWidth,
-      vidHeight,
-      stack,
-      analyser,
-      frequencies,
-      volume,
-      isTracking,
-      noseLength,
-      noseLength2,
-      counterX,
-      counterY,
-      counterZ,
-      centerX,
-      centerY,
-      centerZ,
-      isCameraEnable,
-      emotions,
-      previousValues;
-    return {
-      render,
-      tracker,
-      vid,
-      overlay,
-      overlayCC,
-      vidWidth,
-      vidHeight,
-      stack,
-      analyser,
-      frequencies,
-      volume,
-      isTracking,
-      noseLength,
-      noseLength2,
-      counterX,
-      counterY,
-      counterZ,
-      isCameraEnable,
-      emotions,
-      previousValues,
-      centerX,
-      centerY,
-      centerZ
-    };
   },
   mounted () {
-    this.vid = this.$refs.camera;
-    this.overlay = this.$refs.cameraOverlay;
-    this.overlayCC = this.overlay.getContext('2d');
-    this.vidWidth = this.vid.width;
-    this.vidHeight = this.vid.height;
-    this.isTracking = false;
-    this.previousValues = {
+    global.vid = this.$refs.camera;
+    global.overlay = this.$refs.cameraOverlay;
+    global.overlayCC = global.overlay.getContext('2d');
+    global.vidWidth = global.vid.width;
+    global.vidHeight = global.vid.height;
+    global.isTracking = false;
+    global.previousValues = {
       x: 0,
       y: 0,
       z: 0
@@ -140,8 +94,7 @@ export default {
       },
       false
     );
-
-    this.stack = [];
+    global.stack = [];
   },
   methods: {
     async startCamera () {
@@ -155,35 +108,35 @@ export default {
         });
       window.AudioContext = window.AudioContext || window.webkitAudioContext;
       const context = new AudioContext();
-      this.analyser = context.createAnalyser();
-      this.frequencies = new Uint8Array(this.analyser.frequencyBinCount);
+      global.analyser = context.createAnalyser();
+      global.frequencies = new Uint8Array(global.analyser.frequencyBinCount);
       window.hackForMozzila = stream;
-      await context.createMediaStreamSource(stream).connect(this.analyser);
+      await context.createMediaStreamSource(stream).connect(global.analyser);
       this.$emit('getAudioTrack', stream.getAudioTracks()[0]);
 
-      this.vid.muted = true;
-      this.vid.srcObject = stream;
-      await this.vid.play();
+      global.vid.muted = true;
+      global.vid.srcObject = stream;
+      await global.vid.play();
     },
     drawLoop () {
       requestAnimationFrame(this.drawLoop);
-      this.overlayCC.clearRect(0, 0, this.vidWidth, this.vidHeight);
+      global.overlayCC.clearRect(0, 0, global.vidWidth, global.vidHeight);
       let axis = {};
       const CurrentPosition = clmTracker.getCurrentPosition();
-      if (CurrentPosition && this.isTracking) {
+      if (CurrentPosition && global.isTracking) {
         const event = CurrentPosition;
-        clmTracker.draw(this.overlay);
+        clmTracker.draw(global.overlay);
         if (
-          this.centerX != null &&
-          this.centerY != null &&
-          this.centerZ != null
+          global.centerX != null &&
+          global.centerY != null &&
+          global.centerZ != null
         ) {
-          axis = util.mapEventTo3dTransforms(event, this.centerX, this.centerY, this.centerZ);
+          axis = util.mapEventTo3dTransforms(event, global.centerX, global.centerY, global.centerZ);
           axis = filter.maximumLimiter(axis); // 動く範囲の制限
-          // axis = filter.moveLimiterXYZ(axis, this.previousValues); // 外れ値を除く
-          axis = filter.getMovingAverage(axis, this.stack); // 移動平均
-          axis.body_deg = util.getBodyDeg(event);
-          axis.body_deg = filter.bodyDegLimiter(axis.body_deg);
+          // axis = filter.moveLimiterXYZ(axis, previousValues); // 外れ値を除く
+          axis = filter.getMovingAverage(axis, global.stack); // 移動平均
+          global.body_deg = filter.bodyDegAverage(global.body_deg);
+          axis.body_deg = global.body_deg;
         }
       }
       if (CurrentPosition) {
@@ -191,14 +144,14 @@ export default {
         const parameters = clmTracker.getCurrentParameters();
         const emotion = classifier.meanPredict(parameters);
         axis.emotion = emotion || undefined;
-        this.emotions = axis.emotion;
+        global.emotions = axis.emotion;
       }
       // 口の動き
-      if (this.analyser) {
-        this.volume = Math.floor(util.getFrequency(this.frequencies, this.analyser));
+      if (global.analyser) {
+        global.volume = Math.floor(util.getFrequency(global.frequencies, global.analyser));
         const threshold = 10; // 閾値以上の音を拾う
-        this.volume = (this.volume - threshold) / (100 - threshold);
-        axis.volume = this.volume;
+        global.volume = (global.volume - threshold) / (100 - threshold);
+        axis.volume = global.volume;
       }
       if (axis === {}) {
         axis = 0;
@@ -206,35 +159,35 @@ export default {
       this.$emit('axis', axis);
     },
     startTracking () {
-      if (!this.isTracking) {
-        if (this.vid != null) {
-          this.vid.play();
-          clmTracker.start(this.vid);
+      if (!global.isTracking) {
+        if (global.vid != null) {
+          global.vid.play();
+          clmTracker.start(global.vid);
         }
-        this.isTracking = true;
+        global.isTracking = true;
       }
     },
     stopTracking () {
-      if (this.isTracking) {
-        this.isTracking = false;
+      if (global.isTracking) {
+        global.isTracking = false;
       }
     },
     initializeTilt () {
       // 初期設定
-      if (clmTracker.getCurrentPosition() && this.isTracking) {
+      if (clmTracker.getCurrentPosition() && global.isTracking) {
         const event = clmTracker.getCurrentPosition();
         const centerValue = 0.9; // 顔が正面のときのxDeg値
         // X軸方向の傾き
         const tops = (event[0][1] + event[14][1]) / 2;
         const bottoms = (event[6][1] + event[8][1]) / 2;
         const middle = bottoms + (tops - bottoms) / 2;
-        this.centerX =
+        global.centerX =
           Math.floor(
             ((((centerValue - event[37][1] / middle) / 0.2) * Math.PI) / 2) *
             100
           ) / 100;
         // Y軸方向の傾き
-        this.centerY =
+        global.centerY =
           Math.floor(
             -Math.atan(
               (event[33][0] - (event[25][0] + event[30][0]) / 2) /
@@ -244,7 +197,7 @@ export default {
             100
           ) / 100;
         // Z軸方向の傾き
-        this.centerZ =
+        global.centerZ =
           Math.floor(
             Math.atan(
               (event[27][1] - event[32][1]) / (event[32][0] - event[27][0])
@@ -252,6 +205,9 @@ export default {
             1.5 *
             100
           ) / 100;
+        // 初期の両目の中心
+        global.pre_eyes_center_x = (event[32][0] + event[27][0]) / 2;
+        global.pre_eyes_center_y = (event[32][1] + event[27][1]) / 2;
       }
     }
   }

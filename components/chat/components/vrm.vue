@@ -5,13 +5,8 @@
       <p class="status">
         {{ status }}
       </p>
-      <canvas ref="model" width="240" height="180"></canvas>
+      <canvas ref="model" width="240" height="180" />
     </div>
-    <!--
-    <div>
-      <button @click="Animate" class="btn btn-success">Animation</button>
-    </div>
-    -->
   </div>
 </template>
 
@@ -36,18 +31,19 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import { VRM, VRMUtils, VRMSchema } from '@pixiv/three-vrm';
+import { VRM, VRMSchema, VRMUtils } from '@pixiv/three-vrm';
+
+let currentVrm;
 
 export default {
   name: 'Vrm',
   data () {
-    let renderer, camera, currentVrm, scene, clock, modelName, isAnimate, mixer;
+    let renderer, camera, clock, modelName, isAnimate, mixer, scene;
     return {
       renderer,
       camera,
       scene,
       clock,
-      currentVrm,
       status,
       modelName,
       isAnimate,
@@ -105,12 +101,12 @@ export default {
       this.scene.add(light);
     },
     DeleteModel () {
-      this.scene.remove(this.currentVrm.scene);
+      this.scene.remove(currentVrm.scene);
     },
     LoadModels (modelName) {
       // モデル
       this.status = 'モデル読み込み中...';
-      if (this.currentVrm) {
+      if (currentVrm) {
         this.DeleteModel();
       }
       const modelSrc = '/models/' + modelName; // 利用するモデルの配置場所
@@ -125,7 +121,7 @@ export default {
             if (this.scene != null) {
               this.scene.add(vrm.scene);
             }
-            this.currentVrm = vrm;
+            currentVrm = vrm;
             vrm.scene.rotation.y = Math.PI;
             vrm.humanoid.getBoneNode(
               VRMSchema.HumanoidBoneName.RightUpperArm
@@ -155,14 +151,14 @@ export default {
     },
     ChangeVrm (axis) {
       // 瞬き
-      if (this.currentVrm) {
+      if (currentVrm) {
         const canvas = this.renderer.domElement;
         this.camera.aspect = canvas.clientWidth / canvas.clientHeight;
 
         const blinkVal =
           Math.sin((this.clock.elapsedTime) / 3) ** 1024 +
           Math.sin((this.clock.elapsedTime * 4) / 7) ** 1024;
-        this.currentVrm.blendShapeProxy.setValue(
+        currentVrm.blendShapeProxy.setValue(
           VRMSchema.BlendShapePresetName.Blink,
           blinkVal
         );
@@ -174,65 +170,65 @@ export default {
       /*
       表情のトラッキング
       手の初分(挙手出来るようにするとか)
-    */
-      if (this.currentVrm && axis !== 0) {
+      */
+      if (currentVrm && axis !== 0) {
         const deltaTime = this.clock.getDelta();
-        this.currentVrm.blendShapeProxy.setValue(
+        currentVrm.blendShapeProxy.setValue(
           VRMSchema.BlendShapePresetName.A,
           axis.volume * Math.random()
         );
-        this.currentVrm.blendShapeProxy.setValue(
+        currentVrm.blendShapeProxy.setValue(
           VRMSchema.BlendShapePresetName.I,
           axis.volume * Math.random()
         );
         /*
-        this.currentVrm.blendShapeProxy.setValue(
+        currentVrm.blendShapeProxy.setValue(
           VRMSchema.BlendShapePresetName.U,
           axis.volume * Math.random()
         );
-        this.currentVrm.blendShapeProxy.setValue(
+        currentVrm.blendShapeProxy.setValue(
           VRMSchema.BlendShapePresetName.E,
           axis.volume * Math.random()
         );
-        this.currentVrm.blendShapeProxy.setValue(
+        currentVrm.blendShapeProxy.setValue(
           VRMSchema.BlendShapePresetName.O,
           axis.volume * Math.random()
         );
         */
         if (axis.x && axis.y && axis.z) {
           // ボーンをセットs
-          this.currentVrm.humanoid.getBoneNode(
+          currentVrm.humanoid.getBoneNode(
             VRMSchema.HumanoidBoneName.Neck
           ).rotation.x = axis.x;
-          this.currentVrm.humanoid.getBoneNode(
+          currentVrm.humanoid.getBoneNode(
             VRMSchema.HumanoidBoneName.Neck
           ).rotation.y = axis.y;
-          this.currentVrm.humanoid.getBoneNode(
+          currentVrm.humanoid.getBoneNode(
             VRMSchema.HumanoidBoneName.Neck
           ).rotation.z = axis.z;
-          this.currentVrm.humanoid.getBoneNode(
+          currentVrm.humanoid.getBoneNode(
             VRMSchema.HumanoidBoneName.Spine
           ).rotation.z = axis.body_deg;
         }
         if (axis.emotion !== undefined) {
           // console.log(axis.emotion);
-          this.currentVrm.blendShapeProxy.setValue(
+          currentVrm.blendShapeProxy.setValue(
             VRMSchema.BlendShapePresetName.Joy,
             axis.emotion[5].value
           );
           /*
-          this.currentVrm.blendShapeProxy.setValue(
+          currentVrm.blendShapeProxy.setValue(
             VRMSchema.BlendShapePresetName.Sorrow,
             axis.emotion[3].value
           );
 
-          this.currentVrm.blendShapeProxy.setValue(
+          currentVrm.blendShapeProxy.setValue(
             VRMSchema.BlendShapePresetName.Angry,
             axis.emotion[0].value
           );
           */
         }
-        this.currentVrm.update(deltaTime);
+        currentVrm.update(deltaTime);
       }
       if (this.renderer) {
         // VRMモデルを更新
