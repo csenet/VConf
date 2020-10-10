@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <video
-      autoplay
-      :srcObject.prop="stream"
-      :peerId="peerId"
-      width="240"
-      height="180"
-      @click="focus"
-    />
-  </div>
+  <video
+    autoplay
+    :srcObject.prop="stream"
+    :peerId="peerId"
+    width="240"
+    height="180"
+    @click="focus"
+  />
 </template>
 
 <script>
