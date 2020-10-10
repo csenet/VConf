@@ -1,68 +1,71 @@
 <template>
-  <div class="container-fluid background">
-    <setting
-      v-if="viewFlag"
-      ref="Setting"
-      :local-stream="localStream"
-      @close="closeWindows"
-      @changeModel="changeModel"
-      @changeBackground="changeBackground"
-    />
-    <div class="row">
-      <div class="col-3">
-        <div class="container">
-          <div class="row">
-            <tracker ref="Tracker" class="mt-3 mb-3" @axis="axis" @getAudioTrack="getAudioTrack" />
-          </div>
-          <div class="row">
-            <vrm
-              ref="Vrm"
-              @getStream="getStream"
-              @getTrack="getTrack"
-              @finishLoading="finishLoading"
-            />
-          </div>
-          <div class="row">
-            <div class="jumbotron mt-3 pt-3 pb-3 bg-light">
-              <button class="btn btn-success mr-1" @click="changeTracking">
-                <font-awesome-icon v-if="isTracking" icon="stop" />
-                <font-awesome-icon v-if="!isTracking" icon="video" />
-              </button>
-              <button class="btn btn-info" @click="toggleConnect">
-                {{ isConnected ? '切断' : '接続' }}
-              </button>
-              <button class="btn btn-dark" @click="openSetting">
-                <font-awesome-icon icon="cogs" />
-              </button>
-              <button class="btn btn-info" @click="toggleMute">
-                <font-awesome-icon v-if="isMuted" icon="volume-up" />
-                <font-awesome-icon v-if="!isMuted" icon="volume-mute" />
-              </button>
-              <button class="btn btn-info" @click="mirror">
-                <font-awesome-icon icon="desktop" />
-              </button>
-              <button class="btn btn-info" @click="startCamera">
-                <font-awesome-icon icon="desktop" />
-              </button>
-              <button class="btn btn-danger" @click="initializePosition">
-                <font-awesome-icon icon="undo-alt" />
-              </button>
+  <div>
+    <div class="container-fluid background">
+      <setting
+        v-if="viewFlag"
+        ref="Setting"
+        :local-stream="localStream"
+        @close="closeWindows"
+        @changeModel="changeModel"
+        @changeBackground="changeBackground"
+      />
+      <div class="row">
+        <div class="col-3">
+          <div class="container">
+            <div class="row">
+              <tracker ref="Tracker" class="mt-3 mb-3" @axis="axis" @getAudioTrack="getAudioTrack" />
+            </div>
+            <div class="row">
+              <vrm
+                ref="Vrm"
+                @getStream="getStream"
+                @getTrack="getTrack"
+                @finishLoading="finishLoading"
+              />
+            </div>
+            <div class="row">
+              <div class="jumbotron mt-3 pt-3 pb-3 bg-light">
+                <button class="btn btn-success mr-1" @click="changeTracking">
+                  <font-awesome-icon v-if="isTracking" icon="stop" />
+                  <font-awesome-icon v-if="!isTracking" icon="video" />
+                </button>
+                <button class="btn btn-info" @click="toggleConnect">
+                  {{ isConnected ? '切断' : '接続' }}
+                </button>
+                <button class="btn btn-dark" @click="openSetting">
+                  <font-awesome-icon icon="cogs" />
+                </button>
+                <button class="btn btn-info" @click="toggleMute">
+                  <font-awesome-icon v-if="isMuted" icon="volume-up" />
+                  <font-awesome-icon v-if="!isMuted" icon="volume-mute" />
+                </button>
+                <button class="btn btn-info" @click="mirror">
+                  <font-awesome-icon icon="desktop" />
+                </button>
+                <button class="btn btn-info" @click="startCamera">
+                  <font-awesome-icon icon="desktop" />
+                </button>
+                <button class="btn btn-danger" @click="initializePosition">
+                  <font-awesome-icon icon="undo-alt" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <FocusVideo />
-      </div>
-      <div id="sticky-sidebar" class="col">
-        <div class="sticky-top">
-          <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
+        <div class="col">
+          <FocusVideo />
         </div>
+      </div>
+    </div>
+    <div id="sticky-sidebar" class="side-video">
+      <div class="sticky-top">
+        <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+
 .background {
   position: relative;
   height: 100vh;
@@ -90,6 +93,12 @@
   right: -5px;
   bottom: -5px;
   z-index: -1;
+}
+
+.side-video {
+  z-index: 1;
+  width: 100%;
+  background: rgb(241, 0, 0);
 }
 </style>
 <script>
