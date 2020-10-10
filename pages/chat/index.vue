@@ -9,7 +9,7 @@
       @changeBackground="changeBackground"
     />
     <div class="row">
-      <div class="col-6">
+      <div class="col-3">
         <div class="container">
           <div class="row">
             <tracker ref="Tracker" class="mt-3 mb-3" @axis="axis" @getAudioTrack="getAudioTrack" />
@@ -51,13 +51,18 @@
           </div>
         </div>
       </div>
-      <div class="col-3 pt-3 mx-auto">
-        <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
+      <div class="col">
+        <FocusVideo />
+      </div>
+      <div id="sticky-sidebar" class="col">
+        <div class="sticky-top">
+          <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
+        </div>
       </div>
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 .background {
   position: relative;
   height: 100vh;
@@ -92,13 +97,16 @@ import Tracker from '~/components/chat/components/tracker/tracker.vue';
 import Vrm from '~/components/chat/components/vrm.vue';
 import WebRTC from '~/components/chat/components/webrtc.vue';
 import Setting from '~/components/chat/components/setting.vue';
+import FocusVideo from '~/components/chat/components/video/focusVideo.vue';
 
 export default {
+  name: 'Index',
   components: {
     Tracker,
     Vrm,
-    WebRTC,
-    Setting
+    Setting,
+    FocusVideo,
+    WebRTC
   },
   data () {
     return {

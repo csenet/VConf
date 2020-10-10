@@ -17,8 +17,7 @@ export default {
   props: ['stream', 'peerId'],
   methods: {
     focus () {
-      this.data = { stream: this.stream, peerId: this.peerId };
-      this.$emit('focused', this.data);
+      this.$emit('focused', this.peerId, this.stream);
     }
   }
 };

@@ -10,25 +10,15 @@
         @focused="focus"
       />
     </div>
-    <video
-      width="360"
-      height="270"
-      class="pt-1"
-      :srcObject.prop="focusVideo.stream"
-      loop
-      playsinline
-      autoplay
-    />
   </div>
 </template>
 <style>
 #remoteStream {
   background: gray;
   width: 480px;
-  height: 210px;
+  height: auto;
   padding: 10px;
   margin: 0 auto;
-  overflow: auto;
 }
 </style>
 <script>
@@ -49,8 +39,7 @@ export default {
       remoteStreams: [],
       room: '',
       messages: '',
-      displayStream: '',
-      focusVideo: ''
+      displayStream: ''
     };
   },
   mounted () {
@@ -67,7 +56,9 @@ export default {
       if (!this.roomName) {
         return;
       }
-      if (this.audioTrack > 0) { this.localStream.addTrack(this.audioTrack); }
+      if (this.audioTrack > 0) {
+        this.localStream.addTrack(this.audioTrack);
+      }
       this.room = this.peer.joinRoom(this.roomName, {
         mode: 'sfu',
         stream: this.localStream
@@ -93,7 +84,9 @@ export default {
         this.remoteStreams = this.remoteStreams.filter(
           stream => stream.peerId !== peerId
         );
-        if (peerId === this.focusVideo.peerId) { this.focusVideo = ''; }
+        if (peerId === this.$store.state.video.focusVideo.peerId) {
+          this.$store.commit('video/resetFocusVideo');
+        }
       });
     },
     async startMirror () {
@@ -103,7 +96,9 @@ export default {
         alert('画面共有を開始できません');
       }
       this.localStream = this.displayStream;
-      if (this.audioTrack !== -1) { this.localStream.addTrack(this.audioTrack); }
+      if (this.audioTrack !== -1) {
+        this.localStream.addTrack(this.audioTrack);
+      }
     },
     mute () {
       this.localStream.getAudioTracks()[0].enabled = false;
@@ -118,10 +113,13 @@ export default {
       this.remoteStreams = [];
       this.room.close();
       this.$toast.show('退室しました');
-      this.focusVideo = '';
+      this.$store.commit('video/resetFocusVideo');
     },
-    focus (data) {
-      this.focusVideo = data;
+    focus (...data) {
+      this.$store.commit('video/setFocusVideo', {
+        id: data[0],
+        stream: data[1]
+      });
     }
   }
 };
