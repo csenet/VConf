@@ -2,7 +2,7 @@
   <div id="webrtc">
     <div id="remoteStream" class="row">
       <Video
-        v-for="(stream,key) in remoteStreams"
+        v-for="(stream,key) in $store.state.video.videoStreams"
         :key="key"
         autoplay
         :stream="stream.stream"
@@ -70,20 +70,16 @@ export default {
         this.$toast.show(`${peerId} が入室しました`);
       });
       this.room.on('stream', (stream) => {
-        if (!this.connectedPeers.includes(stream.peerId)) {
-          this.connectedPeers.push(stream.peerId);
-          this.remoteStreams.push({
-            peerId: stream.peerId,
-            stream
+        if (!this.$store.state.video.videoStreams.some(peer => peer.peerId === stream.peerId)) {
+          this.$store.commit('video/addVideo', {
+            id: stream.peerId,
+            mediaStream: stream
           });
         }
       });
       this.room.on('peerLeave', (peerId) => {
         this.$toast.show(`${peerId} が退室しました`);
-        this.connectedPeers = this.connectedPeers.filter(id => id !== peerId);
-        this.remoteStreams = this.remoteStreams.filter(
-          stream => stream.peerId !== peerId
-        );
+        this.$store.commit('video/removeVideo', peerId);
         if (peerId === this.$store.state.video.focusVideo.peerId) {
           this.$store.commit('video/resetFocusVideo');
         }
