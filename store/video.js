@@ -14,14 +14,14 @@ export const mutations = {
   setUserVideo (state, stream) {
     state.userVideoStream = stream;
   },
-  addVideo (state, { stream, id }) {
+  addVideo (state, { mediaStream, id }) {
     state.videoStreams.push({
       peerId: id,
-      mediaStream: stream
+      stream: mediaStream
     });
   },
   removeVideo (state, { id }) {
-    state.videoStreams.filter(stream => stream.peerId !== id);
+    state.videoStreams = state.videoStreams.filter(stream => stream.peerId !== id);
   },
   removeAllVideo (state) {
     state.videoStreams = [];
