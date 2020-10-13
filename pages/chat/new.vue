@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-4 bg-dark">
-        <setting/>
+        <setting />
       </div>
-      <div class="col-8 bg-info"></div>
+      <div class="col-8 bg-info" />
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
 import Setting from '~/components/chat/components/setting.vue';
 
 export default {
-  name: 'new',
+  name: 'New',
   components: {
     Setting
   }
