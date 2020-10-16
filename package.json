@@ -14,7 +14,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.29",
     "@fortawesome/free-solid-svg-icons": "^5.13.1",
     "@fortawesome/vue-fontawesome": "^0.1.10",
-    "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/pwa": "^3.2.2",
     "@nuxtjs/toast": "^3.3.0",
     "@pixiv/three-vrm": "^0.3.5",
     "@types/dotenv": "^8.2.0",
