@@ -1287,10 +1287,10 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
-"@pixiv/three-vrm@^0.3.5":
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm/-/three-vrm-0.3.6.tgz#c94c8386e5ce8259e3f2d953e62ada8308b04df1"
-  integrity sha512-ppihuP2rNM8gGrS0w17fLyGiflfa0HZqpzJ+PCpFXIUUxJgqcm5fyXdsLX+Mw1z/7OKlBPAYGWlIc3DEk6Mxew==
+"@pixiv/three-vrm@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm/-/three-vrm-0.4.3.tgz#31cd6c6924693034ba79ea87a3af0baa2328b196"
+  integrity sha512-OdS950QQ6esQKbqs37zHqvtlk26Jqly7gQti2YYsQseWhM97N6dpwpFznDN1oIXBCLInN6lJdOylvcFnUdnVJQ==
 
 "@types/anymatch@*":
   version "1.3.1"
