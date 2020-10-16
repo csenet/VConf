@@ -1,9 +1,6 @@
 export const state = () => ({
   userVideoStream: MediaStream,
-  videoStreams: [{
-    peerId: String,
-    mediaStream: MediaStream
-  }],
+  videoStreams: [],
   focusVideo: {
     peerId: String,
     mediaStream: MediaStream

@@ -58,7 +58,7 @@ export default {
     this.status = 'モデルを選択してください';
     this.renderer.render(this.scene, this.camera);
     const canvas = this.$refs.model;
-    const stream = canvas.captureStream();
+    const stream = canvas.captureStream(60);
     this.$emit('getStream', stream);
     this.isAnimate = false;
   },

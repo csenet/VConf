@@ -1,44 +1,14 @@
-<template>
-  <div id="webrtc">
-    <div id="remoteStream" class="row">
-      <Video
-        v-for="(stream,key) in $store.state.video.videoStreams"
-        :key="key"
-        autoplay
-        :stream="stream.stream"
-        :peer-id="stream.peerId"
-        @focused="focus"
-      />
-    </div>
-  </div>
-</template>
-<style>
-#remoteStream {
-  background: gray;
-  width: 480px;
-  height: auto;
-  padding: 10px;
-  margin: 0 auto;
-}
-</style>
 <script>
 import Peer from 'skyway-js';
-import Video from '~/components/chat/components/video.vue';
 
 export default {
-  components: {
-    Video
-  },
   // eslint-disable-next-line vue/require-prop-types
   props: ['localStream', 'audioTrack'],
   data: () => {
     return {
       roomName: '',
       peer: '',
-      connectedPeers: [],
-      remoteStreams: [],
       room: '',
-      messages: '',
       displayStream: ''
     };
   },
@@ -79,7 +49,7 @@ export default {
       });
       this.room.on('peerLeave', (peerId) => {
         this.$toast.show(`${peerId} が退室しました`);
-        this.$store.commit('video/removeVideo', peerId);
+        this.$store.commit('video/removeVideo', { id: peerId });
         if (peerId === this.$store.state.video.focusVideo.peerId) {
           this.$store.commit('video/resetFocusVideo');
         }
@@ -106,16 +76,10 @@ export default {
       this.room.send(axis);
     },
     close () {
-      this.remoteStreams = [];
+      this.$store.commit('video/removeAllVideo');
       this.room.close();
       this.$toast.show('退室しました');
       this.$store.commit('video/resetFocusVideo');
-    },
-    focus (...data) {
-      this.$store.commit('video/setFocusVideo', {
-        id: data[0],
-        stream: data[1]
-      });
     }
   }
 };

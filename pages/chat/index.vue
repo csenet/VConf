@@ -55,13 +55,10 @@
         <div class="col">
           <FocusVideo />
         </div>
+        <RemoteVideo />
       </div>
     </div>
-    <div id="sticky-sidebar" class="side-video">
-      <div class="sticky-top">
-        <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
-      </div>
-    </div>
+    <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
   </div>
 </template>
 <style scoped>
@@ -94,16 +91,11 @@
   bottom: -5px;
   z-index: -1;
 }
-
-.side-video {
-  z-index: 1;
-  width: 100%;
-  background: rgb(241, 0, 0);
-}
 </style>
 <script>
 import Tracker from '~/components/chat/components/tracker/tracker.vue';
 import Vrm from '~/components/chat/components/vrm.vue';
+import RemoteVideo from '~/components/chat/components/video/remoteVideo.vue';
 import WebRTC from '~/components/chat/components/webrtc.vue';
 import Setting from '~/components/chat/components/setting.vue';
 import FocusVideo from '~/components/chat/components/video/focusVideo.vue';
@@ -115,7 +107,8 @@ export default {
     Vrm,
     Setting,
     FocusVideo,
-    WebRTC
+    WebRTC,
+    RemoteVideo
   },
   data () {
     return {
