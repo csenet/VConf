@@ -7,10 +7,10 @@
         <input id="drawerCheckbox" class="l-drawer__checkbox" type="checkbox">
         <!-- ドロワーアイコン -->
         <label class="l-drawer__icon" for="drawerCheckbox">
-          <span class="l-drawer__icon-parts"/>
+          <span class="l-drawer__icon-parts" />
         </label>
         <!-- 背景を暗く -->
-        <label class="l-drawer__overlay" for="drawerCheckbox"/>
+        <label class="l-drawer__overlay" for="drawerCheckbox" />
         <!-- ドロワーメニュー -->
         <nav class="l-drawer__menu remoteStream">
           <Video
