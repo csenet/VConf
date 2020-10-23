@@ -11,9 +11,9 @@
     "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/vue-fontawesome": "^0.1.10",
+    "@fortawesome/vue-fontawesome": "^2.0.0",
     "@nuxtjs/pwa": "^3.2.2",
     "@nuxtjs/toast": "^3.3.0",
     "@pixiv/three-vrm": "^0.5.0",
@@ -22,9 +22,9 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.7",
     "nuxt-fontawesome": "^0.4.0",
-    "skyway-js": "^3.0.1",
+    "skyway-js": "^3.1.0",
     "stats.js": "^0.17.0",
-    "three": "^0.117.1",
+    "three": "^0.121.1",
     "vue": "^2.6.12",
     "vue-js-modal": "^2.0.0-rc.3"
   },
@@ -32,7 +32,7 @@
     "@nuxtjs/eslint-config": "^4.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.8.1",
+    "eslint": "^7.11.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "node-sass": "^4.14.1",
     "sass-loader": "^10.0.4"
