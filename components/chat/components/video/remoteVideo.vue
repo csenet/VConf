@@ -1,41 +1,29 @@
 <template>
   <div id="webrtc">
-    <!-- ヘッダーエリア -->
-    <header class="l-header">
-      <!-- ドロワーエリア -->
-      <div class="l-drawer">
-        <input id="drawerCheckbox" class="l-drawer__checkbox" type="checkbox">
-        <!-- ドロワーアイコン -->
-        <label class="l-drawer__icon" for="drawerCheckbox">
-          <span class="l-drawer__icon-parts" />
-        </label>
-        <!-- 背景を暗く -->
-        <label class="l-drawer__overlay" for="drawerCheckbox" />
-        <!-- ドロワーメニュー -->
-        <nav class="l-drawer__menu remoteStream">
-          <Video
-            v-for="(stream,key) in $store.state.video.videoStreams"
-            :key="key"
-            autoplay
-            :stream="stream.stream"
-            :peer-id="stream.peerId"
-            @focused="focus"
-          />
-        </nav>
-      </div><!-- /ドロワーメニュー -->
-    </header><!-- /ヘッダーエリア -->
+    <!-- ドロワーエリア -->
+    <div class="l-drawer">
+      <input id="drawerCheckbox" class="l-drawer__checkbox" type="checkbox">
+      <!-- ドロワーアイコン -->
+      <label class="l-drawer__icon" for="drawerCheckbox">
+        <span class="l-drawer__icon-parts" />
+      </label>
+      <!-- 背景を暗く -->
+      <label class="l-drawer__overlay" for="drawerCheckbox" />
+      <!-- ドロワーメニュー -->
+      <nav class="l-drawer__menu remoteStream">
+        <Video
+          v-for="(stream,key) in $store.state.video.videoStreams"
+          :key="key"
+          autoplay
+          :stream="stream.stream"
+          :peer-id="stream.peerId"
+          @focused="focus"
+        />
+      </nav>
+    </div><!-- /ドロワーメニュー -->
   </div>
 </template>
 <style lang="scss">
-/*ヘッダー*/
-.l-header {
-  background: pink;
-  width: 100%;
-  height: 60px;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
 
 /*ドロワー*/
 .l-drawer {
@@ -47,6 +35,7 @@
 
   // ハンバーガーアイコン
   &__icon {
+    background: white;
     cursor: pointer;
     display: block;
     width: 56px;

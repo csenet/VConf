@@ -54,20 +54,8 @@
               class="form-control"
               @change="changeBackground(color)"
             >
-              <option disabled>
-                選択してください
-              </option>
-              <option value="0xffebcd" selected="selected">
-                ベージュ
-              </option>
-              <option value="0x9cbb1c">
-                黄緑
-              </option>
-              <option value="0xffa500">
-                オレンジ
-              </option>
-              <option value="0xffffff">
-                白
+              <option v-for="(i, index) in colors" :key="index" :value="i.color">
+                {{ i.name }}
               </option>
             </select>
           </div>
@@ -90,10 +78,31 @@ export default {
     return {
       color: '',
       modelName: '',
-      isLoading: false
+      isLoading: false,
+      colors: [
+        {
+          name: 'ベージュ',
+          color: 0xFFEBCD
+        },
+        {
+          name: '黄緑',
+          color: 0x9CBB1C
+        },
+        {
+          name: 'オレンジ',
+          color: 0xFFA500
+        },
+        {
+          name: '白',
+          color: 0xFFFFFF
+        }
+      ]
     };
   },
   methods: {
+    mounted () {
+      // this.color = this.$store.state.vrm.backgroundColor;
+    },
     close () {
       this.$emit('close');
     },
@@ -103,8 +112,7 @@ export default {
       this.$emit('changeModel', modelName);
     },
     changeBackground (color) {
-      this.color = color;
-      this.$emit('changeBackground', color);
+      this.$store.commit('vrm/changeBackgroundColor', { backgroundColor: color });
     },
     changeStatus () {
       this.isLoading = false;

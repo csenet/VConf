@@ -32,6 +32,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { VRM, VRMSchema, VRMUtils } from '@pixiv/three-vrm';
+import * as Motion from './tracker/motion.js';
 
 let currentVrm;
 
@@ -66,6 +67,19 @@ export default {
     CreateRenderer () {
       // レンダラー
       const $canvas = this.$refs.model;
+      /*
+      this.renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        canvas: $canvas
+      });
+      */
+      this.$store.commit('vrm/setRenderer', {
+        render:
+          new THREE.WebGLRenderer({
+            antialias: true,
+            canvas: $canvas
+          })
+      });
       this.renderer = new THREE.WebGLRenderer({
         antialias: true,
         canvas: $canvas
@@ -140,11 +154,9 @@ export default {
           });
         },
         progress =>
-          console.log(
-            'モデルを読み込んでいます...',
+          this.$toast.show('モデルを読み込んでいます...',
             100.0 * (progress.loaded / progress.total),
-            '%'
-          ),
+            '%'),
         error => console.error(error)
       );
       this.renderer.render(this.scene, this.camera);

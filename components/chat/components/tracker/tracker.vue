@@ -10,9 +10,7 @@
         loop
         playsinline
         width="240"
-      >
-        <!-- <source src="~assets/test.mp4" /> -->
-      </video>
+      />
       <canvas
         id="cameraOverlay"
         ref="cameraOverlay"
@@ -37,6 +35,7 @@
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+  background: white;
 }
 
 #container {
@@ -114,7 +113,6 @@ export default {
       await context.createMediaStreamSource(stream).connect(global.analyser);
       this.$emit('getAudioTrack', stream.getAudioTracks()[0]);
 
-      global.vid.muted = true;
       global.vid.srcObject = stream;
       await global.vid.play();
     },

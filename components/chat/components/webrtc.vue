@@ -1,3 +1,6 @@
+<template>
+  <div />
+</template>
 <script>
 import Peer from 'skyway-js';
 
