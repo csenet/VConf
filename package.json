@@ -16,15 +16,15 @@
     "@fortawesome/vue-fontawesome": "^2.0.0",
     "@nuxtjs/pwa": "^3.2.2",
     "@nuxtjs/toast": "^3.3.0",
-    "@pixiv/three-vrm": "^0.5.1",
+    "@pixiv/three-vrm": "^0.5.2",
     "@types/dotenv": "^8.2.0",
     "clmtrackr": "^1.1.2",
-    "core-js": "^3.6.5",
+    "core-js": "^3.7.0",
     "nuxt": "^2.14.7",
     "nuxt-fontawesome": "^0.4.0",
     "skyway-js": "^3.1.0",
     "stats.js": "^0.17.0",
-    "three": "^0.121.1",
+    "three": "^0.122.0",
     "vue": "^2.6.12",
     "vue-js-modal": "^2.0.0-rc.3"
   },
@@ -35,6 +35,6 @@
     "eslint": "^7.12.1",
     "eslint-plugin-nuxt": "^1.0.0",
     "node-sass": "^5.0.0",
-    "sass-loader": "^10.0.4"
+    "sass-loader": "^10.0.5"
   }
 }
