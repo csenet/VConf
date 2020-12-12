@@ -3708,11 +3708,10 @@ entities@^2.0.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.1.0.tgz#992d3129cf7df6870b96c57858c249a120f8b8b5"
   integrity sha512-hCx1oky9PFrJ611mf0ifBLBRW8lUUVRlFolb5gWRfIELabBlbp9xZvrqZLZAs+NxFnbfQoeGd8wDkygjg7U85w==
 
-"enum@git+https://github.com/eastandwest/enum.git#react-native":
-  version "2.3.0"
-  resolved "git+https://github.com/eastandwest/enum.git#7f2a9e59b97c32f10abbc82378c2e0d779e89e1b"
-  dependencies:
-    is-buffer "^1.1.0"
+enum@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/enum/-/enum-3.0.4.tgz#6c3afd2c85db7ded79ecb54a703078a34b2bca2b"
+  integrity sha512-X+VaPeIut6Vh0nJq1sfSBQQuqVmjUpiheoR5RokqeRm4xkzsNZjOqK+gpSnW+BrEs5d9q7Wl+nf1LpolFDYp4g==
 
 env-paths@^2.2.0:
   version "2.2.0"
@@ -5218,7 +5217,7 @@ is-binary-path@~2.1.0:
   dependencies:
     binary-extensions "^2.0.0"
 
-is-buffer@^1.1.0, is-buffer@^1.1.5:
+is-buffer@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
@@ -8475,15 +8474,15 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
-skyway-js@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/skyway-js/-/skyway-js-4.0.0.tgz#6f0c63412bd3db72ee8f25d6bec501bff2d5fedf"
-  integrity sha512-R66VUziqkWbIBGCGnHhckCn25I8Q4C5Zt7e3Ksirptt7ZnpvZAKXYQ5CPvkH/Lg+JeAtiH/474k0iRTULGqASg==
+skyway-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/skyway-js/-/skyway-js-4.1.1.tgz#72962fa39e62884f6f13deb04ed481b77e14cda9"
+  integrity sha512-V7GcwMRShlxPQf670iY9DDvppZjOFINtBEEcQaXcAREZCeSkvZwx2Wb56jnglH/Z68xcHzLXmj/C5mkHXeU1Og==
   dependencies:
     "@jitsi/sdp-interop" "^0.1.13"
     "@types/node" "^12.6.8"
     detect-browser "^4.6.0"
-    enum "git+https://github.com/eastandwest/enum.git#react-native"
+    enum "^3.0.4"
     events "^3.0.0"
     js-binarypack "0.0.9"
     object-sizeof "^1.4.0"
