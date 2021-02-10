@@ -16,7 +16,7 @@
     "@fortawesome/vue-fontawesome": "^2.0.2",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/toast": "^3.3.0",
-    "@pixiv/three-vrm": "^0.6.0",
+    "@pixiv/three-vrm": "^0.6.1",
     "@types/dotenv": "^8.2.0",
     "clmtrackr": "^1.1.2",
     "core-js": "^3.8.3",
@@ -24,7 +24,7 @@
     "nuxt-fontawesome": "^0.4.0",
     "skyway-js": "^4.3.0",
     "stats.js": "^0.17.0",
-    "three": "^0.123.0",
+    "three": "^0.125.2",
     "vue": "^2.6.12",
     "vue-js-modal": "^2.0.0-rc.3"
   },
