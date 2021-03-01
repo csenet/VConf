@@ -111,6 +111,7 @@ export default {
       global.frequencies = new Uint8Array(global.analyser.frequencyBinCount);
       window.hackForMozzila = stream;
       await context.createMediaStreamSource(stream).connect(global.analyser);
+      // eslint-disable-next-line vue/custom-event-name-casing
       this.$emit('getAudioTrack', stream.getAudioTracks()[0]);
 
       global.vid.srcObject = stream;

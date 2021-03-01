@@ -109,6 +109,7 @@ export default {
     changeModel (modelName) {
       this.isLoading = true;
       this.modelName = modelName;
+      // eslint-disable-next-line vue/custom-event-name-casing
       this.$emit('changeModel', modelName);
     },
     changeBackground (color) {

@@ -1,5 +1,5 @@
 <template>
-  <video :srcObject.prop="$store.state.video.focusVideo.mediaStream" autoplay></video>
+  <video :srcObject.prop="$store.state.video.focusVideo.mediaStream" autoplay />
 </template>
 
 <script>

@@ -32,7 +32,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import { VRM, VRMSchema, VRMUtils } from '@pixiv/three-vrm';
-import * as Motion from './tracker/motion.js';
+// import * as Motion from './tracker/motion.js';
 
 let currentVrm;
 
@@ -60,6 +60,7 @@ export default {
     this.renderer.render(this.scene, this.camera);
     const canvas = this.$refs.model;
     const stream = canvas.captureStream(60);
+    // eslint-disable-next-line vue/custom-event-name-casing
     this.$emit('getStream', stream);
     this.isAnimate = false;
   },
@@ -150,6 +151,7 @@ export default {
               VRMSchema.HumanoidBoneName.RightHand
             ).rotation.z = -0.1;
 
+            // eslint-disable-next-line vue/custom-event-name-casing
             this.$emit('finishLoading');
           });
         },

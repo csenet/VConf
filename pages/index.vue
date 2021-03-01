@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     movePage () {
-      location.href = `/chat?room=${this.roomId}`;
+      location.href = '/chat?room=' + this.roomId;
     }
   }
 };

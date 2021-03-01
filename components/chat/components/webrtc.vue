@@ -40,7 +40,7 @@ export default {
         this.$toast.show('入室しました');
       });
       this.room.on('peerJoin', (peerId) => {
-        this.$toast.show(`${peerId} が入室しました`);
+        this.$toast.show(peerId + 'が入室しました');
       });
       this.room.on('stream', (stream) => {
         if (!this.$store.state.video.videoStreams.some(peer => peer.peerId === stream.peerId)) {
@@ -51,7 +51,7 @@ export default {
         }
       });
       this.room.on('peerLeave', (peerId) => {
-        this.$toast.show(`${peerId} が退室しました`);
+        this.$toast.show(peerId + 'が退室しました');
         this.$store.commit('video/removeVideo', { id: peerId });
         if (peerId === this.$store.state.video.focusVideo.peerId) {
           this.$store.commit('video/resetFocusVideo');
@@ -64,6 +64,7 @@ export default {
       } catch {
         alert('画面共有を開始できません');
       }
+      // eslint-disable-next-line vue/no-mutating-props
       this.localStream = this.displayStream;
       if (this.audioTrack !== -1) {
         this.localStream.addTrack(this.audioTrack);
