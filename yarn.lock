@@ -5463,9 +5463,9 @@ jsesc@~0.5.0:
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
 
-"jsfeat@git+https://github.com/inspirit/jsfeat":
+"jsfeat@git+https://github.com/inspirit/jsfeat.git":
   version "0.0.8"
-  resolved "git+https://github.com/inspirit/jsfeat#4c7b336bbeeb26e6cd4cdf3c7d414abe273846f3"
+  resolved "git+https://github.com/inspirit/jsfeat.git#4c7b336bbeeb26e6cd4cdf3c7d414abe273846f3"
 
 json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
