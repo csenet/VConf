@@ -21,28 +21,6 @@
     </div>
   </div>
 </template>
-<style>
-#cameraOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-}
-
-#camera {
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  background: white;
-}
-
-#container {
-  position: relative;
-  width: 370px;
-}
-</style>
 <script>
 import clm from 'clmtrackr';
 import Stats from 'stats.js';
@@ -65,8 +43,6 @@ classifier.init();
 
 export default {
   name: 'Tracker',
-  data () {
-  },
   mounted () {
     global.vid = this.$refs.camera;
     global.overlay = this.$refs.cameraOverlay;
@@ -212,3 +188,26 @@ export default {
   }
 };
 </script>
+
+<style>
+#cameraOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+#camera {
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  background: white;
+}
+
+#container {
+  position: relative;
+  width: 370px;
+}
+</style>

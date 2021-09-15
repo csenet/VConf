@@ -23,7 +23,33 @@
                 @finishLoading="finishLoading"
               />
             </div>
-            <ToolBar />
+            <div class="row">
+              <div class="jumbotron mt-3 pt-3 pb-3 bg-light">
+                <button class="btn btn-success mr-1" @click="changeTracking">
+                  <font-awesome-icon v-if="isTracking" icon="stop" />
+                  <font-awesome-icon v-if="!isTracking" icon="play" />
+                </button>
+                <button class="btn btn-info" @click="toggleConnect">
+                  {{ isConnected ? '切断' : '接続' }}
+                </button>
+                <button class="btn btn-dark" @click="openSetting">
+                  <font-awesome-icon icon="cogs" />
+                </button>
+                <button class="btn btn-info" @click="toggleMute">
+                  <font-awesome-icon v-if="isMuted" icon="volume-up" />
+                  <font-awesome-icon v-if="!isMuted" icon="volume-mute" />
+                </button>
+                <button class="btn btn-info" @click="mirror">
+                  <font-awesome-icon icon="desktop" />
+                </button>
+                <button class="btn btn-info" @click="startCamera">
+                  <font-awesome-icon icon="video" />
+                </button>
+                <button class="btn btn-danger" @click="initializePosition">
+                  <font-awesome-icon icon="undo-alt" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col">
@@ -35,37 +61,6 @@
     <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
   </div>
 </template>
-<style scoped>
-
-.background {
-  position: relative;
-  height: 100vh;
-  min-height: 300px;
-  background-image: url("~assets/img/syber.jpeg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.background::before {
-  content: "";
-  background: inherit;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
-  z-index: -1;
-}
-</style>
 <script>
 import Tracker from '~/components/chat/components/tracker/tracker.vue';
 import Vrm from '~/components/chat/components/vrm.vue';
@@ -73,7 +68,6 @@ import RemoteVideo from '~/components/chat/components/video/remoteVideo.vue';
 import WebRTC from '~/components/chat/components/webrtc.vue';
 import Setting from '~/components/chat/components/setting.vue';
 import FocusVideo from '~/components/chat/components/video/focusVideo.vue';
-import ToolBar from '~/components/chat/components/toolBar';
 
 export default {
   name: 'Index',
@@ -83,8 +77,7 @@ export default {
     Setting,
     FocusVideo,
     WebRTC,
-    RemoteVideo,
-    ToolBar
+    RemoteVideo
   },
   data () {
     return {
@@ -169,3 +162,34 @@ export default {
 };
 
 </script>
+<style scoped>
+
+.background {
+  position: relative;
+  height: 100vh;
+  min-height: 300px;
+  background-image: url("~assets/img/syber.jpeg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.background::before {
+  content: "";
+  background: inherit;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+}
+</style>

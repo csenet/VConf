@@ -3,6 +3,7 @@
 </template>
 <script>
 import Peer from 'skyway-js';
+import { config } from '~/config.ts';
 
 export default {
   // eslint-disable-next-line vue/require-prop-types
@@ -17,7 +18,7 @@ export default {
   },
   mounted () {
     this.peer = new Peer({
-      key: '2cc1c46b-a0e9-47bc-ab5e-65586b72ee58',
+      key: config.apiKey,
       debug: 3
     });
     if (this.$nuxt.$route.query.room) {
