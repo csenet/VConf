@@ -24,7 +24,6 @@
   </div>
 </template>
 <style lang="scss">
-
 /*ドロワー*/
 .l-drawer {
   position: relative;
