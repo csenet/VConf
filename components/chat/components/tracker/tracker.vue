@@ -70,7 +70,7 @@ export default {
       },
       false
     );
-    global.stack = [];
+    global.dataStack = [];
   },
   methods: {
     async startCamera () {
@@ -110,7 +110,7 @@ export default {
           axis = util.mapEventTo3dTransforms(event, global.centerX, global.centerY, global.centerZ);
           axis = filter.maximumLimiter(axis); // 動く範囲の制限
           // axis = filter.moveLimiterXYZ(axis, this.previousValues); // 外れ値を除く
-          axis = filter.getMovingAverage(axis, global.stack); // 移動平均
+          axis = filter.getMovingAverage(axis, global.dataStack); // 移動平均
           global.body_deg = filter.bodyDegAverage(global.body_deg);
           axis.body_deg = global.body_deg;
         }

@@ -28,7 +28,7 @@ export let emotions;
 // eslint-disable-next-line import/no-mutable-exports
 export let volume;
 // eslint-disable-next-line import/no-mutable-exports
-export let stack;
+export let dataStack;
 // eslint-disable-next-line import/no-mutable-exports,camelcase
 export let pre_eyes_center_x;
 // eslint-disable-next-line import/no-mutable-exports,camelcase
