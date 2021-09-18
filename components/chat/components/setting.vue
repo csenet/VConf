@@ -124,7 +124,7 @@ export default {
   },
   computed: {
     userStream () {
-      return this.$store.getters['video/getBroadcastStream'];
+      return this.$store.getters['video/getUserVideo'];
     }
   },
   methods: {

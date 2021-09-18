@@ -26,10 +26,177 @@
 import clm from 'clmtrackr';
 import Stats from 'stats.js';
 import emotionClassifier from './emotionClassifier.js';
-import * as filter from './filter.js';
 import * as util from './utility.js';
 
-require('./global.js');
+const stack = [];
+
+function maximumLimiter (axis) {
+  const limit = (70 / 180) * Math.PI;
+  if (axis.x > limit) {
+    axis.x = limit;
+  }
+  if (axis.y > limit / 2) {
+    axis.y = limit / 2;
+  }
+  if (axis.z > limit) {
+    axis.z = limit;
+  }
+  if (axis.x < -limit) {
+    axis.x = -limit;
+  }
+  if (axis.y < -limit / 2) {
+    axis.y = -limit / 2;
+  }
+  if (axis.z < -limit) {
+    axis.z = -limit;
+  }
+  return axis;
+}
+
+// function moveLimiterXYZ (axis, prev) {
+//   const maximumLimit = (20 / 180) * Math.PI;
+//   const minimumLimit = (10 / 180) * Math.PI;
+//   prev.x = 0;
+//   prev.y = 0;
+//   prev.z = 0;
+//   let x, y, z;
+//
+//   if (
+//     Math.abs(axis.x - prev.x) < maximumLimit &&
+//     Math.abs(axis.x - prev.x) > minimumLimit
+//   ) {
+//     x = axis.x;
+//     prev.x = x;
+//   } else if (axis.x > prev.x) {
+//     x = axis.x;
+//   } else if (axis.x < prev.x) {
+//     x = axis.x;
+//   }
+//   if (
+//     Math.abs(axis.y - prev.y) < maximumLimit &&
+//     Math.abs(axis.y - prev.y) > minimumLimit
+//   ) {
+//     y = axis.y;
+//     prev.y = y;
+//   } else if (axis.y > prev.y) {
+//     y = axis.y;
+//   } else if (axis.y < prev.y) {
+//     y = axis.y;
+//   }
+//   if (
+//     Math.abs(axis.z - prev.z) < maximumLimit &&
+//     Math.abs(axis.z - prev.z) > minimumLimit
+//   ) {
+//     z = axis.z;
+//     prev.z = z;
+//   } else if (axis.z > prev.z) {
+//     z = axis.z;
+//   } else if (axis.z < prev.z) {
+//     z = axis.z;
+//   }
+//   return {
+//     x,
+//     y,
+//     z
+//   };
+// }
+
+const bodyStack = [];
+
+function bodyDegAverage (deg) {
+// 5回分の移動平均を取り，なめらかにする
+  let average = 0;
+  const a = 10;
+  if (bodyStack.length > a) {
+    bodyStack.shift();
+    bodyStack.push(deg);
+    for (let i = 0; i < bodyStack.length; i++) {
+      average += bodyStack[i];
+    }
+    average /= bodyStack.length;
+    bodyStack.pop();
+    bodyStack.push(average);
+
+    return average;
+  } else {
+    bodyStack.push(deg);
+    return deg;
+  }
+}
+
+function moveLimiter (difference) {
+  const limit = 0.1;
+  if (Math.abs(difference) > limit) {
+    if (difference > 0) {
+      difference += limit;
+    } else {
+      difference -= limit;
+    }
+  }
+  return difference;
+}
+
+function getMovingAverage (axis) {
+  // 5回分の移動平均を取り，なめらかにする
+  const averageAxis = {
+    x: 0,
+    y: 0,
+    z: 0
+  };
+  const k = 5;
+
+  if (stack.length > k) {
+    // stack.shift();
+    // stack.push(axis);
+
+    const limitX = Math.abs(stack[k - 2].x - stack[k - 3].x);
+    const limitY = Math.abs(stack[k - 2].y - stack[k - 3].y);
+    const limitZ = Math.abs(stack[k - 2].z - stack[k - 3].z);
+
+    const differenceX = Math.abs(
+      stack[k - 1].x - stack[k - 2].x
+    );
+    const differenceY = Math.abs(
+      stack[k - 1].y - stack[k - 2].y
+    );
+    const differenceZ = Math.abs(
+      stack[k - 1].z - stack[k - 2].z
+    );
+    stack[k - 1].x = moveLimiter(
+      limitX,
+      differenceX,
+      stack[k - 1].x,
+      stack[k - 2].x
+    );
+    stack[k - 1].y = moveLimiter(
+      limitY,
+      differenceY,
+      stack[k - 1].y,
+      stack[k - 2].y
+    );
+    stack[k - 1].z = moveLimiter(
+      limitZ,
+      differenceZ,
+      stack[k - 1].z,
+      stack[k - 2].z
+    );
+
+    for (let i = 0; i < stack.length; i++) {
+      averageAxis.x += stack[i].x;
+      averageAxis.y += stack[i].y;
+      averageAxis.z += stack[i].z;
+    }
+    averageAxis.x /= stack.length;
+    averageAxis.y /= stack.length;
+    averageAxis.z /= stack.length;
+    stack.pop();
+    stack.push(axis);
+    return averageAxis;
+  } else {
+    stack.push(axis);
+    return axis;
+  }
+}
 
 // eslint-disable-next-line new-cap
 const clmTracker = new clm.tracker({
@@ -108,10 +275,10 @@ export default {
           global.centerZ != null
         ) {
           axis = util.mapEventTo3dTransforms(event, global.centerX, global.centerY, global.centerZ);
-          axis = filter.maximumLimiter(axis); // 動く範囲の制限
-          // axis = filter.moveLimiterXYZ(axis, this.previousValues); // 外れ値を除く
-          axis = filter.getMovingAverage(axis, global.dataStack); // 移動平均
-          global.body_deg = filter.bodyDegAverage(global.body_deg);
+          axis = maximumLimiter(axis); // 動く範囲の制限
+          // axis = moveLimiterXYZ(axis, this.previousValues); // 外れ値を除く
+          axis = getMovingAverage(axis); // 移動平均
+          global.body_deg = bodyDegAverage(global.body_deg);
           axis.body_deg = global.body_deg;
         }
       }
@@ -125,8 +292,8 @@ export default {
       // 口の動き
       if (global.analyser) {
         global.volume = Math.floor(util.getFrequency(global.frequencies, global.analyser));
-        const threshold = 10; // 閾値以上の音を拾う
-        global.volume = (global.volume - threshold) / (100 - threshold);
+        // const threshold = 10; // 閾値以上の音を拾う
+        global.volume = global.volume / 30.0;
         axis.volume = global.volume;
       }
       if (axis === {}) {
@@ -191,9 +358,6 @@ export default {
 </script>
 
 <style scoped>
-canvas {
-  background: lightgray;
-}
 
 #cameraOverlay {
   position: absolute;

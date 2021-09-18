@@ -1,5 +1,6 @@
 /* 各種フィルタ */
-
+require('./global.js');
+const stack = [];
 function maximumLimiter (axis) {
   const limit = (70 / 180) * Math.PI;
   if (axis.x > limit) {
@@ -115,55 +116,55 @@ function getMovingAverage (axis) {
   };
   const k = 5;
 
-  if (global.stack.length > k) {
+  if (stack.length > k) {
     // stack.shift();
     // stack.push(axis);
 
-    const limitX = Math.abs(global.stack[k - 2].x - global.stack[k - 3].x);
-    const limitY = Math.abs(global.stack[k - 2].y - global.stack[k - 3].y);
-    const limitZ = Math.abs(global.stack[k - 2].z - global.stack[k - 3].z);
+    const limitX = Math.abs(stack[k - 2].x - stack[k - 3].x);
+    const limitY = Math.abs(stack[k - 2].y - stack[k - 3].y);
+    const limitZ = Math.abs(stack[k - 2].z - stack[k - 3].z);
 
     const differenceX = Math.abs(
-      global.stack[k - 1].x - global.stack[k - 2].x
+      stack[k - 1].x - stack[k - 2].x
     );
     const differenceY = Math.abs(
-      global.stack[k - 1].y - global.stack[k - 2].y
+      stack[k - 1].y - stack[k - 2].y
     );
     const differenceZ = Math.abs(
-      global.stack[k - 1].z - global.stack[k - 2].z
+      stack[k - 1].z - stack[k - 2].z
     );
-    global.stack[k - 1].x = moveLimiter(
+    stack[k - 1].x = moveLimiter(
       limitX,
       differenceX,
-      global.stack[k - 1].x,
-      global.stack[k - 2].x
+      stack[k - 1].x,
+      stack[k - 2].x
     );
-    global.stack[k - 1].y = moveLimiter(
+    stack[k - 1].y = moveLimiter(
       limitY,
       differenceY,
-      global.stack[k - 1].y,
-      global.stack[k - 2].y
+      stack[k - 1].y,
+      stack[k - 2].y
     );
-    global.stack[k - 1].z = moveLimiter(
+    stack[k - 1].z = moveLimiter(
       limitZ,
       differenceZ,
-      global.stack[k - 1].z,
-      global.stack[k - 2].z
+      stack[k - 1].z,
+      stack[k - 2].z
     );
 
-    for (let i = 0; i < global.stack.length; i++) {
-      averageAxis.x += global.stack[i].x;
-      averageAxis.y += global.stack[i].y;
-      averageAxis.z += global.stack[i].z;
+    for (let i = 0; i < stack.length; i++) {
+      averageAxis.x += stack[i].x;
+      averageAxis.y += stack[i].y;
+      averageAxis.z += stack[i].z;
     }
-    averageAxis.x /= global.stack.length;
-    averageAxis.y /= global.stack.length;
-    averageAxis.z /= global.stack.length;
-    global.stack.pop();
-    global.stack.push(axis);
+    averageAxis.x /= stack.length;
+    averageAxis.y /= stack.length;
+    averageAxis.z /= stack.length;
+    stack.pop();
+    stack.push(axis);
     return averageAxis;
   } else {
-    global.stack.push(axis);
+    stack.push(axis);
     return axis;
   }
 }

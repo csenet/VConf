@@ -171,7 +171,7 @@ export default {
           });
         },
         progress =>
-          this.$toast.show('モデルを読み込んでいます...',
+          console.log('モデルを読み込んでいます...',
             100.0 * (progress.loaded / progress.total),
             '%'),
         error => console.error(error)
@@ -230,26 +230,26 @@ export default {
       if (currentVrm && axis !== 0) {
         const deltaTime = this.clock.getDelta();
         currentVrm.blendShapeProxy.setValue(
-          VRMSchema.BlendShapePresetName.A,
-          axis.volume * Math.random()
-        );
-        currentVrm.blendShapeProxy.setValue(
-          VRMSchema.BlendShapePresetName.I,
-          axis.volume * Math.random()
-        );
-
-        currentVrm.blendShapeProxy.setValue(
-          VRMSchema.BlendShapePresetName.U,
-          axis.volume * Math.random()
-        );
-        currentVrm.blendShapeProxy.setValue(
-          VRMSchema.BlendShapePresetName.E,
-          axis.volume * Math.random()
-        );
-        currentVrm.blendShapeProxy.setValue(
           VRMSchema.BlendShapePresetName.O,
-          axis.volume * Math.random()
+          axis.volume
         );
+        // currentVrm.blendShapeProxy.setValue(
+        //   VRMSchema.BlendShapePresetName.I,
+        //   axis.volume * Math.random()
+        // );
+        //
+        // currentVrm.blendShapeProxy.setValue(
+        //   VRMSchema.BlendShapePresetName.U,
+        //   axis.volume * Math.random()
+        // );
+        // currentVrm.blendShapeProxy.setValue(
+        //   VRMSchema.BlendShapePresetName.E,
+        //   axis.volume * Math.random()
+        // );
+        // currentVrm.blendShapeProxy.setValue(
+        //   VRMSchema.BlendShapePresetName.O,
+        //   axis.volume * Math.random()
+        // );
 
         if (axis.x && axis.y && axis.z) {
           // ボーンをセットs
@@ -267,20 +267,19 @@ export default {
           ).rotation.z = axis.body_deg;
         }
         if (axis.emotion !== undefined) {
-          // console.log(axis.emotion);
-          currentVrm.blendShapeProxy.setValue(
-            VRMSchema.BlendShapePresetName.Joy,
-            axis.emotion[5].value
-          );
-          currentVrm.blendShapeProxy.setValue(
-            VRMSchema.BlendShapePresetName.Sorrow,
-            axis.emotion[3].value
-          );
-
-          currentVrm.blendShapeProxy.setValue(
-            VRMSchema.BlendShapePresetName.Angry,
-            axis.emotion[0].value
-          );
+          // console.log(axis.emotion[5]);
+          // currentVrm.blendShapeProxy.setValue(
+          //   VRMSchema.BlendShapePresetName.Joy,
+          //   1.0
+          // );
+          // currentVrm.blendShapeProxy.setValue(
+          //   VRMSchema.BlendShapePresetName.Sorrow,
+          //   axis.emotion[3].value
+          // );
+          // currentVrm.blendShapeProxy.setValue(
+          //   VRMSchema.BlendShapePresetName.Angry,
+          //   axis.emotion[0].value
+          // );
         }
         currentVrm.update(deltaTime);
       }
