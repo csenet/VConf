@@ -267,11 +267,11 @@ export default {
           ).rotation.z = axis.body_deg;
         }
         if (axis.emotion !== undefined) {
-          // console.log(axis.emotion[5]);
-          // currentVrm.blendShapeProxy.setValue(
-          //   VRMSchema.BlendShapePresetName.Joy,
-          //   1.0
-          // );
+          console.log(axis.emotion[5]);
+          currentVrm.blendShapeProxy.setValue(
+            VRMSchema.BlendShapePresetName.Joy,
+            1.0
+          );
           // currentVrm.blendShapeProxy.setValue(
           //   VRMSchema.BlendShapePresetName.Sorrow,
           //   axis.emotion[3].value

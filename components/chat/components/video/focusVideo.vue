@@ -12,7 +12,7 @@ export default {
 video {
   position: absolute;
   z-index: -1;
-  background: blue;
+  background: lightgray;
   right: 0;
   height: 100%;
   width: calc(100% - 305px);
