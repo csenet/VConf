@@ -135,7 +135,6 @@
 
     // メインエリアを暗くする
     .l-drawer__overlay {
-      opacity: 0.3;
       pointer-events: auto; //ポインタの動作デフォルトに戻す
     }
 

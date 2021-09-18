@@ -229,6 +229,7 @@ export default {
       */
       if (currentVrm && axis !== 0) {
         const deltaTime = this.clock.getDelta();
+        console.log(axis.volume);
         currentVrm.blendShapeProxy.setValue(
           VRMSchema.BlendShapePresetName.O,
           axis.volume
@@ -269,8 +270,8 @@ export default {
         if (axis.emotion !== undefined) {
           console.log(axis.emotion[5]);
           currentVrm.blendShapeProxy.setValue(
-            VRMSchema.BlendShapePresetName.Joy,
-            1.0
+            VRMSchema.BlendShapePresetName.Fun,
+            axis.emotion[5].value
           );
           // currentVrm.blendShapeProxy.setValue(
           //   VRMSchema.BlendShapePresetName.Sorrow,
