@@ -25,8 +25,7 @@ function mapEventTo3dTransforms (event) {
       -Math.atan(
         (event[33][0] - (event[25][0] + event[30][0]) / 2) /
         ((event[14][0] - event[0][0]) / 2)
-      ) *
-      4 -
+      ) * 4 -
       global.centerY;
     // 体の傾きを求める(x軸)
     if (global.pre_eyes_center_x) {

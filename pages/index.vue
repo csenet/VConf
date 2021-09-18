@@ -10,25 +10,34 @@
         </p>
       </div>
       <div class="explain">
-        V会議はバーチャルアバターで会議に参加できる
-        新しいWeb会議システムです！
+        V会議はバーチャルアバターで会議に参加する新しいWeb会議システムです！
       </div>
       <!-- 入力欄 -->
       <hr>
-      <div class="form-group">
-        <label for="roomId">RoomID</label>
+      <div class="text-center">
+        <b style="font-size:1.3em;">使い方</b>
+      </div>
+      <ul>
+        <li><b>ホスト</b></li>
+        <span class="list-item">以下からROOMを作成してURLを共有</span>
+        <li><b>参加者</b></li>
+        <span class="list-item">共有されたリンクを開こう</span>
+      </ul>
+      詳しくは
+      <nuxt-link to="howtouse">ガイド</nuxt-link>
+      を参照
+      <hr>
+      <div class="row g-2">
         <input
           id="roomId"
           v-model="roomId"
           type="text"
-          class="form-control"
+          class="form-control-lg text-center form-control"
           placeholder="RoomID"
           @keydown.enter="movePage"
         >
-      </div>
-      <div class="form-group">
-        <nuxt-link :to="{name:'chat',query:{room:roomId}}" class="btn btn-info">
-          会議を開始
+        <nuxt-link :to="{name:'chat',query:{room:roomId}}" class="btn btn-success btn-lg">
+          CREATE ROOM
         </nuxt-link>
       </div>
     </div>
@@ -59,28 +68,35 @@ export default {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   max-width: 30rem;
-  width:100vw;
-  text-align: center;
+  width: 100vw;
   padding: 1.5rem 4rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.9);
   /* border: double 6px #e6b01d44; */
   border-radius: 10px;
-  box-shadow: 8px 15px 40px #1a251a65 inset;
   height: auto;
+}
+
+.title {
+  text-align: center;
 }
 
 .title h1 {
   font-size: 3rem;
   text-shadow: 6px 3px 5px silver;
-  font-family: "Yu Mincho",serif;
+  font-family: "Yu Mincho", serif;
   font-weight: bold;
 }
 
 .title span {
   font-size: 5.5rem;
-  font-family: "BIZ UDP明朝",serif;
+  font-family: "BIZ UDP明朝", serif;
   font-weight: Bold;
   font-style: italic;
+}
+
+.list-item {
+  display: block;
+  text-indent: 0.5em;
 }
 
 /* 背景 */
@@ -96,6 +112,7 @@ export default {
   z-index: 0;
   overflow: hidden;
 }
+
 .background::before {
   content: "";
   background: inherit;

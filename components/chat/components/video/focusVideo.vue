@@ -1,5 +1,5 @@
 <template>
-  <video :srcObject.prop="$store.state.video.focusVideo.mediaStream" autoplay />
+  <video :srcObject.prop="$store.state.video.focusVideo.mediaStream" autoplay/>
 </template>
 
 <script>
@@ -10,8 +10,10 @@ export default {
 
 <style scoped>
 video {
-  background: gray;
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  background: cornflowerblue;
+  z-index: -2;
+  height: 100vh;
+  width: 100vw;
 }
 </style>

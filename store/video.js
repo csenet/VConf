@@ -11,7 +11,10 @@ export const mutations = {
   setUserVideo (state, stream) {
     state.userVideoStream = stream;
   },
-  addVideo (state, { mediaStream, id }) {
+  addVideo (state, {
+    mediaStream,
+    id
+  }) {
     state.videoStreams.push({
       peerId: id,
       stream: mediaStream
@@ -23,7 +26,10 @@ export const mutations = {
   removeAllVideo (state) {
     state.videoStreams = [];
   },
-  setFocusVideo (state, { id, stream }) {
+  setFocusVideo (state, {
+    id,
+    stream
+  }) {
     state.focusVideo.peerId = id;
     state.focusVideo.mediaStream = stream;
   },

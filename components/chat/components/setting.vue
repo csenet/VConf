@@ -1,17 +1,40 @@
 <template>
   <div class="ViewModal">
     <div id="modal" class="container">
-      <h3>設定</h3>
+      <div class="d-flex justify-content-end fixed-top m-3">
+        <button type="button" class="btn btn-close float-right" aria-label="Close" @click="close" />
+      </div>
+      <h5>Settings</h5>
+      <video
+        :srcObject.prop="userStream"
+        autoplay
+        height="300"
+        width="100%"
+        loop
+        muted
+        playsinline
+      />
+      <div>
+        <button class="btn btn-small btn-outline-primary" @click="startCamera">
+          カメラを開始
+          <font-awesome-icon icon="video" />
+        </button>
+        <button class="btn btn-small btn-outline-primary" @click="startMirror">
+          画面共有を開始
+          <font-awesome-icon icon="desktop" />
+        </button>
+      </div>
+      <span class="text-muted">※画面共有中はアバターは表示されません</span>
       <hr>
       <div class="row">
         <div class="col">
-          <div class="form-group">
-            <label for="modelSelect">モデル：</label>
+          <div class="form-group my-1">
+            <label for="modelSelect" class="form-label">モデル：</label>
             <select
               id="modelSelect"
               v-model="modelName"
               :disabled="isLoading"
-              class="form-control"
+              class="form-control-sm"
               @change="changeModel(modelName)"
             >
               <option disabled>
@@ -46,12 +69,12 @@
               </option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="backgroundSelect">背景色：</label>
+          <div class="form-group my-1">
+            <label for="backgroundSelect" class="form-label">背景色：</label>
             <select
               id="backgroundSelect"
               v-model="color"
-              class="form-control"
+              class="form-control-sm"
               @change="changeBackground(color)"
             >
               <option v-for="(i, index) in colors" :key="index" :value="i.color">
@@ -62,11 +85,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
-          <button class="btn btn-info" @click="close">
-            閉じる
-          </button>
-        </div>
+        URLを共有して参加者を招待しよう！(Save to Clipboard)
+        <a href="" disabled @click.prevent="saveClipboard(url)">{{ url }}</a>
       </div>
     </div>
     <div id="overlay" />
@@ -74,6 +94,8 @@
 </template>
 <script>
 export default {
+  // eslint-disable-next-line vue/require-prop-types
+  props: ['localStream', 'userStream', 'url'],
   data () {
     return {
       color: '',
@@ -96,13 +118,11 @@ export default {
           name: '白',
           color: 0xFFFFFF
         }
-      ]
+      ],
+      userVideoStream: MediaStream
     };
   },
   methods: {
-    mounted () {
-      // this.color = this.$store.state.vrm.backgroundColor;
-    },
     close () {
       this.$emit('close');
     },
@@ -117,6 +137,15 @@ export default {
     },
     changeStatus () {
       this.isLoading = false;
+    },
+    startCamera () {
+      this.$emit('startCamera');
+    },
+    saveClipboard (text) {
+      navigator.clipboard.writeText(text);
+    },
+    startMirror () {
+      this.$emit('startMirror');
     }
   }
 };
@@ -139,14 +168,22 @@ export default {
   z-index: 2;
   transform: translate(-50%, -50%);
   width: 80%;
-  max-width: 400px;
+  max-width: 600px;
   max-height: 70vh;
   box-sizing: border-box;
   padding: 32px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  border: double 6px #58ffff44;
-  box-shadow: 8px 15px 40px #1a251a65 inset;
-  font-size: 2vw;
+  background: white;
+  font-size: 1em;
+}
+</style>
+<style scoped>
+
+video {
+  transform: scale(-1, 1);
+  background: lightgray;
+}
+
+select {
+  width: 200px;
 }
 </style>

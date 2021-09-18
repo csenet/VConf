@@ -5,15 +5,25 @@
         v-if="viewFlag"
         ref="Setting"
         :local-stream="localStream"
+        :user-stream="userStream"
+        :url="url"
         @close="closeWindows"
         @changeModel="changeModel"
         @changeBackground="changeBackground"
+        @startCamera="startCamera"
+        @startMirror="startMirror"
       />
       <div class="row">
         <div class="col-3">
           <div class="container">
             <div class="row">
-              <tracker ref="Tracker" class="mt-3 mb-3" @axis="axis" @getAudioTrack="getAudioTrack" />
+              <tracker
+                ref="Tracker"
+                class="mt-3 mb-3"
+                @axis="axis"
+                @getAudioTrack="getAudioTrack"
+                @getStream="getUserVideoStream"
+              />
             </div>
             <div class="row">
               <vrm
@@ -24,13 +34,9 @@
               />
             </div>
             <div class="row">
-              <div class="jumbotron mt-3 pt-3 pb-3 bg-light">
-                <button class="btn btn-success mr-1" @click="changeTracking">
-                  <font-awesome-icon v-if="isTracking" icon="stop" />
-                  <font-awesome-icon v-if="!isTracking" icon="play" />
-                </button>
+              <div class="jumbotron mt-3 mb-1 pt-3 pb-3 bg-light ">
                 <button class="btn btn-info" @click="toggleConnect">
-                  {{ isConnected ? '切断' : '接続' }}
+                  {{ isConnected ? '退室' : '入室' }}
                 </button>
                 <button class="btn btn-dark" @click="openSetting">
                   <font-awesome-icon icon="cogs" />
@@ -42,8 +48,11 @@
                 <button class="btn btn-info" @click="mirror">
                   <font-awesome-icon icon="desktop" />
                 </button>
-                <button class="btn btn-info" @click="startCamera">
-                  <font-awesome-icon icon="video" />
+              </div>
+              <div class="jumbotron pt-3 pb-3 bg-light">
+                <button class="btn btn-success mr-1" @click="changeTracking">
+                  <font-awesome-icon v-if="isTracking" icon="stop" />
+                  <font-awesome-icon v-if="!isTracking" icon="play" />
                 </button>
                 <button class="btn btn-danger" @click="initializePosition">
                   <font-awesome-icon icon="undo-alt" />
@@ -52,12 +61,10 @@
             </div>
           </div>
         </div>
-        <div class="col">
-          <FocusVideo />
-        </div>
         <RemoteVideo />
       </div>
     </div>
+    <FocusVideo />
     <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
   </div>
 </template>
@@ -83,16 +90,23 @@ export default {
     return {
       localStream: '',
       audioTrack: '',
+      userStream: '',
       viewFlag: true,
       isTracking: false,
       isConnected: false,
-      isMuted: false
+      isMuted: false,
+      roomId: '',
+      url: ''
     };
   },
   mounted () {
+    if (this.$nuxt.$route.query.room) {
+      this.roomId = this.$nuxt.$route.query.room;
+      this.url = 'https://vconf.vercel.app/chat?room=' + this.roomId;
+    }
   },
   methods: {
-    mirror () {
+    startMirror () {
       this.$refs.WebRTC.startMirror();
     },
     toggleMute () {
@@ -157,39 +171,22 @@ export default {
     },
     initializePosition () {
       this.$refs.Tracker.initializeTilt();
+    },
+    getUserVideoStream (stream) {
+      this.userStream = stream;
     }
   }
 };
 
 </script>
 <style scoped>
-
 .background {
-  position: relative;
-  height: 100vh;
-  min-height: 300px;
-  background-image: url("~assets/img/syber.jpeg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.background::before {
-  content: "";
-  background: inherit;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  right: -5px;
-  bottom: -5px;
+  position: fixed;
   z-index: -1;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
 }
 </style>

@@ -10,6 +10,7 @@
         loop
         playsinline
         width="240"
+        muted
       />
       <canvas
         id="cameraOverlay"
@@ -87,9 +88,9 @@ export default {
       global.frequencies = new Uint8Array(global.analyser.frequencyBinCount);
       window.hackForMozzila = stream;
       await context.createMediaStreamSource(stream).connect(global.analyser);
-      // eslint-disable-next-line vue/custom-event-name-casing
+      this.$store.commit('video/setUserVideo', stream);
       this.$emit('getAudioTrack', stream.getAudioTracks()[0]);
-
+      this.$emit('getStream', stream);
       global.vid.srcObject = stream;
       await global.vid.play();
     },
@@ -108,7 +109,7 @@ export default {
         ) {
           axis = util.mapEventTo3dTransforms(event, global.centerX, global.centerY, global.centerZ);
           axis = filter.maximumLimiter(axis); // 動く範囲の制限
-          // axis = filter.moveLimiterXYZ(axis, previousValues); // 外れ値を除く
+          // axis = filter.moveLimiterXYZ(axis, this.previousValues); // 外れ値を除く
           axis = filter.getMovingAverage(axis, global.stack); // 移動平均
           global.body_deg = filter.bodyDegAverage(global.body_deg);
           axis.body_deg = global.body_deg;
