@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <div/>
 </template>
 <script>
 import Peer from 'skyway-js';
@@ -7,7 +7,7 @@ import { config } from '~/config.ts';
 
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['localStream', 'audioTrack'],
+  props: ['audioTrack'],
   data: () => {
     return {
       roomName: '',
@@ -25,11 +25,20 @@ export default {
       this.roomName = this.$nuxt.$route.query.room;
     }
   },
+  computed: {
+    localStream () {
+      return this.$store.state.video.broadcastStream;
+    }
+  },
+  watch: {
+    localStream (stream) {
+      if (this.room) {
+        this.room.replaceStream(stream);
+      }
+    }
+  },
   methods: {
     connect () {
-      if (!this.roomName) {
-        return;
-      }
       if (this.audioTrack > 0) {
         this.localStream.addTrack(this.audioTrack);
       }
@@ -66,7 +75,9 @@ export default {
         alert('画面共有を開始できません');
       }
       // eslint-disable-next-line vue/no-mutating-props
-      this.localStream = this.displayStream;
+      this.$store.commit('video/setBroadcastStream', this.displayStream);
+      // this.$emit('getStream', this.displayStream);
+      this.$store.commit('video/setUserVideo', this.displayStream);
       if (this.audioTrack !== -1) {
         this.localStream.addTrack(this.audioTrack);
       }

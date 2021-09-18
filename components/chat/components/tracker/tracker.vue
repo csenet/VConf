@@ -190,7 +190,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+canvas {
+  background: lightgray;
+}
+
 #cameraOverlay {
   position: absolute;
   top: 0;

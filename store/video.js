@@ -1,5 +1,6 @@
 export const state = () => ({
   userVideoStream: MediaStream,
+  broadcastStream: MediaStream,
   videoStreams: [],
   focusVideo: {
     peerId: String,
@@ -7,7 +8,15 @@ export const state = () => ({
   }
 });
 
+export const getters = {
+  getUserVideo: state => state.userVideoStream,
+  getBroadcastStream: state => state.broadcastStream
+};
+
 export const mutations = {
+  setBroadcastStream (state, stream) {
+    state.broadcastStream = stream;
+  },
   setUserVideo (state, stream) {
     state.userVideoStream = stream;
   },

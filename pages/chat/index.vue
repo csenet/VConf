@@ -13,59 +13,96 @@
         @startCamera="startCamera"
         @startMirror="startMirror"
       />
-      <div class="row">
-        <div class="col-3">
-          <div class="container">
-            <div class="row">
-              <tracker
-                ref="Tracker"
-                class="mt-3 mb-3"
-                @axis="axis"
-                @getAudioTrack="getAudioTrack"
-                @getStream="getUserVideoStream"
-              />
-            </div>
-            <div class="row">
-              <vrm
-                ref="Vrm"
-                @getStream="getStream"
-                @getTrack="getTrack"
-                @finishLoading="finishLoading"
-              />
-            </div>
-            <div class="row">
-              <div class="jumbotron mt-3 mb-1 pt-3 pb-3 bg-light ">
-                <button class="btn btn-info" @click="toggleConnect">
-                  {{ isConnected ? '退室' : '入室' }}
-                </button>
-                <button class="btn btn-dark" @click="openSetting">
-                  <font-awesome-icon icon="cogs" />
-                </button>
-                <button class="btn btn-info" @click="toggleMute">
-                  <font-awesome-icon v-if="isMuted" icon="volume-up" />
-                  <font-awesome-icon v-if="!isMuted" icon="volume-mute" />
-                </button>
-                <button class="btn btn-info" @click="mirror">
-                  <font-awesome-icon icon="desktop" />
-                </button>
+      <div class="sidebar">
+        <div class="row">
+          <div class="col-3">
+            <div class="container">
+              <div class="row" style="width: 265px !important;">
+                <tracker
+                  ref="Tracker"
+                  class="mt-3 mb-3"
+                  @axis="axis"
+                  @getAudioTrack="getAudioTrack"
+                  @getStream="getUserVideoStream"
+                />
               </div>
-              <div class="jumbotron pt-3 pb-3 bg-light">
-                <button class="btn btn-success mr-1" @click="changeTracking">
-                  <font-awesome-icon v-if="isTracking" icon="stop" />
-                  <font-awesome-icon v-if="!isTracking" icon="play" />
-                </button>
-                <button class="btn btn-danger" @click="initializePosition">
-                  <font-awesome-icon icon="undo-alt" />
-                </button>
+              <div class="row" style="width: 265px !important;">
+                <vrm
+                  ref="Vrm"
+                  @getStream="getStream"
+                  @getTrack="getTrack"
+                  @finishLoading="finishLoading"
+                />
+              </div>
+              <div class="row" style="width: 265px !important;">
+                <div class="jumbotron mt-3 mb-1 pt-3 pb-3 bg-light">
+                  マウスでモデルの視点変更
+                  <hr>
+                  <button class="btn btn-outline-primary" @click="toggleConnect">
+                    {{ isConnected ? 'ルーム退室' : 'ルーム入室' }}
+                  </button>
+                  <button class="btn btn-outline-primary" @click="toggleMute">
+                    <font-awesome-icon v-if="isMuted" icon="volume-up"/>
+                    <font-awesome-icon v-if="!isMuted" icon="volume-mute"/>
+                  </button>
+                  <button class="btn btn-dark" @click="openSetting">
+                    <font-awesome-icon icon="cogs"/>
+                    設定
+                  </button>
+                  <hr>
+                  <p>トラッキング</p>
+                  <button class="btn btn-success mr-1" @click="changeTracking">
+                    <span v-if="isTracking"><font-awesome-icon icon="stop"/> 停止</span>
+                    <span v-if="!isTracking"><font-awesome-icon icon="play"/> 開始</span>
+                  </button>
+                  <button class="btn btn-danger" @click="initializePosition">
+                    <font-awesome-icon icon="undo-alt"/>
+                    初期位置セット
+                  </button>
+                  <hr>
+                  <p>モーション</p>
+                  <div class="form-group">
+                    <button
+                      class="btn btn-outline-light"
+                      @click="$store.commit('vrm/setMotionNum',1)"
+                    >
+                      <img src="../../assets/img/icons/no.png" height="30" width="30"/>
+                    </button>
+                    <button
+                      class="btn btn-outline-light"
+                      @click="$store.commit('vrm/setMotionNum',2)"
+                    >
+                      <img src="../../assets/img/icons/rise.png" height="30" width="30"/>
+                    </button>
+                    <button
+                      class="btn btn-outline-light"
+                      @click="$store.commit('vrm/setMotionNum',3)"
+                    >
+                      <img src="../../assets/img/icons/hello.png" height="30" width="30"/>
+                    </button>
+                    <button
+                      class="btn btn-outline-light"
+                      @click="$store.commit('vrm/setMotionNum',4)"
+                    >
+                      <img src="../../assets/img/icons/peace.png" height="30" width="30"/>
+                    </button>
+                    <button
+                      class="btn btn-outline-light"
+                      @click="$store.commit('vrm/setMotionNum',5)"
+                    >
+                      <img src="../../assets/img/icons/good.png" height="30" width="30"/>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <RemoteVideo/>
         </div>
-        <RemoteVideo />
       </div>
     </div>
-    <FocusVideo />
-    <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" />
+    <FocusVideo/>
+    <WebRTC ref="WebRTC" :local-stream="localStream" :audio-track="audioTrack" @getStream="getUserVideoStream"/>
   </div>
 </template>
 <script>
@@ -139,6 +176,7 @@ export default {
     },
     getStream (stream) {
       this.localStream = stream;
+      this.$store.commit('video/setBroadcastStream', stream);
     },
     getAudioTrack (track) {
       this.audioTrack = track;
@@ -179,10 +217,14 @@ export default {
 };
 
 </script>
-<style scoped>
+<style>
+body {
+  background: skyblue;
+}
+
 .background {
   position: fixed;
-  z-index: -1;
+  z-index: 0;
   top: 0;
   right: 0;
   left: 0;

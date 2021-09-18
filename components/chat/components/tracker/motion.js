@@ -115,11 +115,12 @@ function trapezoid (time, stopTime, width) {
 }
 
 // y:現在の台形のy座標,max:台形の上端のy座標の2倍
-function set1 (stopTime, width, currentVrm) {
+function set1 (stopTime, width, currentVrm, motionTime) {
+  // だめ
   const max = (width - stopTime * 2) * 2;
   const max2 = (width - stopTime * 9) * 2;
-  const y = trapezoid(global.motion_time, stopTime, width);
-  const y2 = trapezoid(global.motion_time, stopTime * 4.5, width);
+  const y = trapezoid(motionTime, stopTime, width);
+  const y2 = trapezoid(motionTime, stopTime * 4.5, width);
   if (y < 0) {
     global.motion_num = 0;
   }
@@ -149,9 +150,10 @@ function set1 (stopTime, width, currentVrm) {
     -0.25 * Math.sin(Math.PI * (y / max));
   currentVrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.LeftLowerArm).rotation.y =
     -2.2 * Math.sin(Math.PI * (y / max));
+  global.motion_time++;
 }
 
-function set2 (stopTime, width, currentVrm) {
+function set2 (stopTime, width, currentVrm, motionTime) {
   const max = (width - stopTime * 2) * 2;
   const y = trapezoid(global.motion_num, stopTime, width);
   if (y < 0) {
@@ -174,9 +176,9 @@ function set2 (stopTime, width, currentVrm) {
   return y;
 }
 
-function set3 (currentVrm) {
-  const time = global.motion_time * speed;
-  const stopTime = 10;
+function set3 (stopTime, width, currentVrm, motionTime) {
+  const time = motionTime * speed;
+  stopTime = 10;
   const haba = 40;
   const y = set2(stopTime, haba);
   if (y >= 19.8) {

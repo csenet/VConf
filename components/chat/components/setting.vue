@@ -2,7 +2,7 @@
   <div class="ViewModal">
     <div id="modal" class="container">
       <div class="d-flex justify-content-end fixed-top m-3">
-        <button type="button" class="btn btn-close float-right" aria-label="Close" @click="close" />
+        <button type="button" class="btn btn-close float-right" aria-label="Close" @click="close"/>
       </div>
       <h5>Settings</h5>
       <video
@@ -17,11 +17,11 @@
       <div>
         <button class="btn btn-small btn-outline-primary" @click="startCamera">
           カメラを開始
-          <font-awesome-icon icon="video" />
+          <font-awesome-icon icon="video"/>
         </button>
         <button class="btn btn-small btn-outline-primary" @click="startMirror">
           画面共有を開始
-          <font-awesome-icon icon="desktop" />
+          <font-awesome-icon icon="desktop"/>
         </button>
       </div>
       <span class="text-muted">※画面共有中はアバターは表示されません</span>
@@ -89,13 +89,13 @@
         <a href="" disabled @click.prevent="saveClipboard(url)">{{ url }}</a>
       </div>
     </div>
-    <div id="overlay" />
+    <div id="overlay"/>
   </div>
 </template>
 <script>
 export default {
   // eslint-disable-next-line vue/require-prop-types
-  props: ['localStream', 'userStream', 'url'],
+  props: ['localStream', 'url'],
   data () {
     return {
       color: '',
@@ -121,6 +121,11 @@ export default {
       ],
       userVideoStream: MediaStream
     };
+  },
+  computed: {
+    userStream () {
+      return this.$store.getters['video/getBroadcastStream'];
+    }
   },
   methods: {
     close () {
@@ -169,7 +174,7 @@ export default {
   transform: translate(-50%, -50%);
   width: 80%;
   max-width: 600px;
-  max-height: 70vh;
+  max-height: 80vh;
   box-sizing: border-box;
   padding: 32px;
   background: white;
@@ -179,7 +184,6 @@ export default {
 <style scoped>
 
 video {
-  transform: scale(-1, 1);
   background: lightgray;
 }
 

@@ -11,9 +11,10 @@ export default {
 <style scoped>
 video {
   position: absolute;
-  background: cornflowerblue;
-  z-index: -2;
-  height: 100vh;
-  width: 100vw;
+  z-index: -1;
+  background: blue;
+  right: 0;
+  height: 100%;
+  width: calc(100% - 305px);
 }
 </style>
