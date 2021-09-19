@@ -3,7 +3,7 @@
     <div class="jumbotron bg-white m-5 text-center">
       <h1>V会議の使い方</h1>
       <p>
-        あいうえお
+        カメラをオンにする→トラッキングを開始→初期位置リセットをすることで利用できます。
       </p>
     </div>
   </div>
