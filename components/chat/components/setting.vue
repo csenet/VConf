@@ -179,6 +179,7 @@ export default {
   padding: 32px;
   background: white;
   font-size: 1em;
+  overflow: scroll;
 }
 </style>
 <style scoped>

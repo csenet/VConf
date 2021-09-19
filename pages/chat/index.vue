@@ -229,6 +229,6 @@ body {
   right: 0;
   left: 0;
   bottom: 0;
-  overflow: hidden;
+  overflow: scroll;
 }
 </style>
