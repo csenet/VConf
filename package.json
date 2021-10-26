@@ -20,10 +20,10 @@
     "@pixiv/three-vrm": "^0.6.0",
     "@types/dotenv": "^8.2.0",
     "clmtrackr": "^1.1.2",
-    "core-js": "^3.8.3",
+    "core-js": "^3.19.0",
     "nuxt": "^2.14.12",
     "nuxt-fontawesome": "^0.4.0",
-    "skyway-js": "^4.3.0",
+    "skyway-js": "^4.4.2",
     "stats.js": "^0.17.0",
     "three": "^0.132.2",
     "vue": "^2.6.12",
@@ -35,7 +35,7 @@
     "@nuxtjs/eslint-module": "^3.0.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
-    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-nuxt": "^3.0.0",
     "sass": "^1.43.3",
     "sass-loader": "^10.2.0"
   }
