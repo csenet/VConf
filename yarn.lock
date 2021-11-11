@@ -8237,10 +8237,10 @@ sirv@^1.0.7:
     mime "^2.3.1"
     totalist "^1.0.0"
 
-skyway-js@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/skyway-js/-/skyway-js-4.4.2.tgz#5503959b9e8b7cc947d97ff65eae24d4f27e1288"
-  integrity sha512-0yEfgJfFNOlF4hQy7mXndxw5e0KJXWXXFYZAc/khGxtzfddaylq8mWO+yN3V4ENZM9550xOVDac9BMGrdL0UjQ==
+skyway-js@^4.4.3:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/skyway-js/-/skyway-js-4.4.3.tgz#a84aed1c13fc3be3eb9a8d5ad337179c338576b1"
+  integrity sha512-m6AvchUWLc5wmDBrxUgsbNuXiyqJPSksiN0hPFtCEX+7c93rUHsCA+j+bB/UEyEH5zLWq4KcBOn3z80xCes0vA==
   dependencies:
     "@jitsi/sdp-interop" "^0.1.13"
     "@types/node" "^12.6.8"
