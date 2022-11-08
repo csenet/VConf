@@ -1443,10 +1443,93 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
-"@pixiv/three-vrm@^0.6.10":
-  version "0.6.10"
-  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm/-/three-vrm-0.6.10.tgz#c0d969ee358b20e67f4e025bcdfe06d296d19791"
-  integrity sha512-4SZvw1NMpRGhE/WBA8yPMc64G4GPtfx0DCHH4ppjhHgrHGK6sQUBTj1ISK2eG2OtyT6qWTcllS68OjShR1IeOw==
+"@pixiv/three-vrm-core@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-core/-/three-vrm-core-1.0.5.tgz#8c497d568c6b32a332885e0319572fcb7cf77f25"
+  integrity sha512-pbmzkqDKKyw39IzgGcM6dCYoGr6FBn6t7VwmrsE1BtrIyNhh7UBTC2tbm/4RlWakLB+BTaBiPi5C5WrrWkMKrw==
+  dependencies:
+    "@pixiv/types-vrm-0.0" "1.0.0"
+    "@pixiv/types-vrmc-vrm-1.0" "1.0.0"
+
+"@pixiv/three-vrm-materials-hdr-emissive-multiplier@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-materials-hdr-emissive-multiplier/-/three-vrm-materials-hdr-emissive-multiplier-1.0.4.tgz#24f5093b41fb64c5fba2c8abb90c9bafbc7f7a0a"
+  integrity sha512-Y6SwEGbwPKaj6d0EHA0VGu6rn82T95ObhuIGKTqIm+LuGvqxvTOfOP4HwLiXcSMMu1qRvq21X/jmu83ehE0clw==
+  dependencies:
+    "@pixiv/types-vrmc-materials-hdr-emissive-multiplier-1.0" "1.0.0"
+
+"@pixiv/three-vrm-materials-mtoon@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-materials-mtoon/-/three-vrm-materials-mtoon-1.0.4.tgz#09bb11193b19c01b30d8660d1b560dada73899b1"
+  integrity sha512-wEXeUNHKO5ZoQVDW9P/cvc/d02Ze8wfu/0ViGep26uasuQqEwcEB3pLYjtBorWV4iUcupfkdaIjZxL3ZMpGuCA==
+  dependencies:
+    "@pixiv/types-vrm-0.0" "1.0.0"
+    "@pixiv/types-vrmc-materials-mtoon-1.0" "1.0.0"
+
+"@pixiv/three-vrm-materials-v0compat@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-materials-v0compat/-/three-vrm-materials-v0compat-1.0.4.tgz#620f70c2a8718b4ba1c2c8d699a8b822034f7bbf"
+  integrity sha512-oGIkToNkfdvm3fagwcYSv/XevwV6ia4tVjvMcdLtP2yEA25yq3wkI9wG7xP15pa5Ss93ISlmZaqCBSuKblOmiw==
+  dependencies:
+    "@pixiv/types-vrm-0.0" "1.0.0"
+    "@pixiv/types-vrmc-materials-mtoon-1.0" "1.0.0"
+
+"@pixiv/three-vrm-node-constraint@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-node-constraint/-/three-vrm-node-constraint-1.0.4.tgz#7306145284e54dc9c740f620e8d9cf030214db89"
+  integrity sha512-QoVARZsO4Nexfkd836vol/kGNhfcv9pHy9BtAv7yqpKgSe16LCRw8EdT4G3/GkeFQKv0uWg2N27Yf+f3BQ0Rlg==
+  dependencies:
+    "@pixiv/types-vrmc-node-constraint-1.0" "1.0.0"
+
+"@pixiv/three-vrm-springbone@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-springbone/-/three-vrm-springbone-1.0.4.tgz#8b145ffd5a720c03f5d5d7e11d4c152cfa1b55c5"
+  integrity sha512-E5TNoCHdfthFMxV+FLRU9AId1/Bm7jrD/9jd6WhCrbhOF/J2BdrxlW1udoBI5OLH9TrM6xxf9VZRgrUUt61bBg==
+  dependencies:
+    "@pixiv/types-vrm-0.0" "1.0.0"
+    "@pixiv/types-vrmc-springbone-1.0" "1.0.0"
+
+"@pixiv/three-vrm@^1.0.0":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm/-/three-vrm-1.0.5.tgz#4db73638359cc73227df82638ac66426c0f22588"
+  integrity sha512-jvohMEyFXAkuK14SYtiZ4O59bDVe2dFJcg0K9MjVVm6qv2811MXCSe06IYUw5/wPB+6oKc5jXTrNSa6FSZ5mhQ==
+  dependencies:
+    "@pixiv/three-vrm-core" "1.0.5"
+    "@pixiv/three-vrm-materials-hdr-emissive-multiplier" "1.0.4"
+    "@pixiv/three-vrm-materials-mtoon" "1.0.4"
+    "@pixiv/three-vrm-materials-v0compat" "1.0.4"
+    "@pixiv/three-vrm-node-constraint" "1.0.4"
+    "@pixiv/three-vrm-springbone" "1.0.4"
+
+"@pixiv/types-vrm-0.0@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pixiv/types-vrm-0.0/-/types-vrm-0.0-1.0.0.tgz#13eca7430ea02752ea8641698368f50acea30ca0"
+  integrity sha512-3jnj/lpoLuzfsAAkqyTRiazxY88RhKFsDZkPmaFgPduDbIveFpzD153StHULO115w69I9VZ5i3ipJ6j7f0BjfA==
+
+"@pixiv/types-vrmc-materials-hdr-emissive-multiplier-1.0@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pixiv/types-vrmc-materials-hdr-emissive-multiplier-1.0/-/types-vrmc-materials-hdr-emissive-multiplier-1.0-1.0.0.tgz#724d060a5cb19bc3d985165a3707accd7c029e7b"
+  integrity sha512-ussIML1MNbWIRehgQDoduy1zXTenubwDdGVekOhN0NO5ovVwVr4VVhLAvWr5gDVIwEliPGafJRqmHpWzmRTtEA==
+
+"@pixiv/types-vrmc-materials-mtoon-1.0@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pixiv/types-vrmc-materials-mtoon-1.0/-/types-vrmc-materials-mtoon-1.0-1.0.0.tgz#0393c6ed7c00a5884c63a599332d30a7a491ed00"
+  integrity sha512-JCqPiJZh7zccZxh28AGebvmBzch1Ql2IhU5n7nertLinPaIeVaYyWjHFJnxNVpn12nhTOYAsWpcUoOKeQWITmg==
+
+"@pixiv/types-vrmc-node-constraint-1.0@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pixiv/types-vrmc-node-constraint-1.0/-/types-vrmc-node-constraint-1.0-1.0.0.tgz#eee6d08ccf78343a1114feede913e7fe8de55155"
+  integrity sha512-fNKPRMk0j87p5IKiSsxFI3inM0kx1oiIX7GBnai+pPxXNGj8zgEHbHtPbhw2kTrRX+Fqs+HTn5U5oiZPnM4YQQ==
+
+"@pixiv/types-vrmc-springbone-1.0@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pixiv/types-vrmc-springbone-1.0/-/types-vrmc-springbone-1.0-1.0.0.tgz#23d10e1530a60f81083e59018cfe0b66b6ea1d4b"
+  integrity sha512-0gLtp3WT2WdCeJIQAPB9baU4w+xrIOLqIr/HgyVlJNmIICZoCdqMC+hu4cJwmPbJNBZsokD5A279Gwbr0pUy4g==
+
+"@pixiv/types-vrmc-vrm-1.0@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@pixiv/types-vrmc-vrm-1.0/-/types-vrmc-vrm-1.0-1.0.0.tgz#4c389fead3bb3920863db4bc3963a2947b398773"
+  integrity sha512-aYy/LyFU6ijzAXHtg+r2TfMKrsT0/amtK4wYEPZa901FZhyvNCYtmUPUA1a1VroIO9pyKC2fd6DlLwWhYenQFg==
 
 "@polka/url@^1.0.0-next.20":
   version "1.0.0-next.20"
