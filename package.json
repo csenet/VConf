@@ -12,31 +12,31 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
-    "@fortawesome/free-solid-svg-icons": "^5.15.2",
-    "@fortawesome/vue-fontawesome": "^2.0.6",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/vue-fontawesome": "^2.0.9",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/toast": "^3.3.0",
     "@nuxtjs/vuetify": "^1.12.1",
-    "@pixiv/three-vrm": "^0.6.0",
+    "@pixiv/three-vrm": "^0.6.10",
     "@types/dotenv": "^8.2.0",
     "clmtrackr": "^1.1.2",
-    "core-js": "^3.19.0",
+    "core-js": "^3.26.0",
     "nuxt": "^2.14.12",
     "nuxt-fontawesome": "^0.4.0",
     "skyway-js": "^4.4.2",
     "stats.js": "^0.17.0",
-    "three": "^0.132.2",
+    "three": "^0.137.0",
     "vue": "^2.6.12",
     "vue-js-modal": "^2.0.0-rc.3"
   },
   "devDependencies": {
     "@nuxt/types": "~2.15.0",
     "@nuxtjs/eslint-config": "^5.0.0",
-    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/eslint-module": "^3.1.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.19.0",
     "eslint-plugin-nuxt": "^4.0.0",
-    "sass": "^1.43.4",
+    "sass": "^1.56.0",
     "sass-loader": "^10.2.0"
   }
 }
