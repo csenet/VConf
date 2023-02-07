@@ -17,7 +17,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/toast": "^3.3.0",
     "@nuxtjs/vuetify": "^1.12.3",
-    "@pixiv/three-vrm": "^1.0.7",
+    "@pixiv/three-vrm": "^1.0.8",
     "@types/dotenv": "^8.2.0",
     "clmtrackr": "^1.1.2",
     "core-js": "^3.26.1",
