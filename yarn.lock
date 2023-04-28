@@ -9007,9 +9007,9 @@ thread-loader@^3.0.4:
     schema-utils "^3.0.0"
 
 three@^0.152.0:
-  version "0.152.0"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.152.0.tgz#a50034af675c636322135b6bb829d6e7e3a6213d"
-  integrity sha512-uvKoYo4b2bnqzsR4RJFuWecxwMKcgT1nFNmiWooCNr6AxZLCtfkj/xcfFgoi5mFopSVorh7bnvTHPfeW8DINGg==
+  version "0.152.1"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.152.1.tgz#943f1056b4dd140a44ec2d0c8f8b035f483e0f20"
+  integrity sha512-6812YuxSnsCQ3DgI27jtuwIW0cgn/ooVshPIcKpuPQ2kygeDTOQtRkYffl4E1IcQElEyHbPjyQznE2jti7fXoA==
 
 through2@^2.0.0:
   version "2.0.5"
