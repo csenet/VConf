@@ -1502,10 +1502,10 @@
     mustache "^2.3.0"
     stack-trace "0.0.10"
 
-"@pixiv/three-vrm-core@2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-core/-/three-vrm-core-2.0.4.tgz#3ef7cf2d346d0bd576991d4f27aa0f7ee6e0d43b"
-  integrity sha512-U1cwo50nPsyr5EPXwPeejqTJRG4h7OaXQYU0dxT852laqPk7MvJ4aFXTEjv+LZqWG6Aqwk9gc4I1VD/emmpWZQ==
+"@pixiv/three-vrm-core@2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-core/-/three-vrm-core-2.0.5.tgz#bd9b5cf43a0c8afe5c8b7704b230ab65a5dcf361"
+  integrity sha512-4RiYvVjoSmMW2ttcNDLzmYqCbi8xJVSVQugD3p3SslQTaAxF6nxRcBfWje39NbJq9nKh38BFepdVqIpYUF4iWw==
   dependencies:
     "@pixiv/types-vrm-0.0" "2.0.3"
     "@pixiv/types-vrmc-vrm-1.0" "2.0.3"
@@ -1533,10 +1533,10 @@
     "@pixiv/types-vrm-0.0" "2.0.3"
     "@pixiv/types-vrmc-materials-mtoon-1.0" "2.0.3"
 
-"@pixiv/three-vrm-node-constraint@2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-node-constraint/-/three-vrm-node-constraint-2.0.3.tgz#bbb71d1318b5e9e99934eee0ddc03d715b258f6e"
-  integrity sha512-JaxOU9DaoMnKx214iWhFFUaiwiBN8RxDp/h04kp3VujuvMeRarOdofRi2ucPX3yGMS0UXPXBCtbGggFIZfHR+w==
+"@pixiv/three-vrm-node-constraint@2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm-node-constraint/-/three-vrm-node-constraint-2.0.5.tgz#9f68273dc8cd62dce1eefd1015edbf98622ef8de"
+  integrity sha512-Xcyuxede3JnKpLahtw6RTLGVSrBMbiwW8wOi3oe9liJLNZ976wkqyF+Wp4GRr3ZtMwPZ6iD9mgHgcWb++W8XAw==
   dependencies:
     "@pixiv/types-vrmc-node-constraint-1.0" "2.0.3"
 
@@ -1548,16 +1548,16 @@
     "@pixiv/types-vrm-0.0" "2.0.3"
     "@pixiv/types-vrmc-springbone-1.0" "2.0.3"
 
-"@pixiv/three-vrm@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm/-/three-vrm-2.0.4.tgz#47c860cdb4ab81c664118fefaffcef8229b947bf"
-  integrity sha512-LzIUbB5SHxTdhPFCWztHpTRSvU7Nwl29w6KEgwmSnC+BxjDSr4auukJBpqwbsh+UGGhQZh4otcK8mA3rJN2OhQ==
+"@pixiv/three-vrm@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@pixiv/three-vrm/-/three-vrm-2.0.5.tgz#9abc7c6706268bee9f925181750fb586eb672e0a"
+  integrity sha512-17WxJhlho0TgDeHGP1qlaCeymCB++ML8nhgubxD3TEokCdKJmCairfC8tDzQf2rwn/IrExlUZPXa1/Fs9iNm/A==
   dependencies:
-    "@pixiv/three-vrm-core" "2.0.4"
+    "@pixiv/three-vrm-core" "2.0.5"
     "@pixiv/three-vrm-materials-hdr-emissive-multiplier" "2.0.3"
     "@pixiv/three-vrm-materials-mtoon" "2.0.3"
     "@pixiv/three-vrm-materials-v0compat" "2.0.4"
-    "@pixiv/three-vrm-node-constraint" "2.0.3"
+    "@pixiv/three-vrm-node-constraint" "2.0.5"
     "@pixiv/three-vrm-springbone" "2.0.3"
 
 "@pixiv/types-vrm-0.0@2.0.3":
