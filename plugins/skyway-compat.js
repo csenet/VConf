@@ -7,12 +7,14 @@
 
 import { 
   SkyWayContext, 
-  SkyWayRoom,
-  LocalStream
+  SkyWayRoom
 } from '@skyway-sdk/room';
 
+// Export SkyWay SDK classes for global use
+export { SkyWayContext, SkyWayRoom };
+
 // Compatibility class to mimic the old Peer class
-class Peer {
+export class Peer {
   constructor(options) {
     this.options = options;
     this.id = null;
@@ -61,7 +63,7 @@ class Peer {
 }
 
 // Compatibility class to mimic the old Room class
-class RoomWrapper {
+export class RoomWrapper {
   constructor(room, me, localStream) {
     this.room = room;
     this.me = me;

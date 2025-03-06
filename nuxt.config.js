@@ -32,7 +32,8 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: '~/plugins/main.js' },
-    { src: '~/plugins/skyway-compat.js' }
+    { src: '~/plugins/skyway-compat.js' },
+    { src: '~/plugins/vrm-compat.js' }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -77,7 +78,8 @@ export default {
     // Transpile specific dependencies
     transpile: [
       'three',
-      '@pixiv/three-vrm'
+      '@pixiv/three-vrm',
+      '@skyway-sdk/room'
     ],
     // Optimize chunks
     optimization: {

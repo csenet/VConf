@@ -1,4 +1,4 @@
-import { VRMSchema } from '@pixiv/three-vrm';
+import { VRMSchema } from '~/plugins/vrm-compat';
 
 require('./global.js');
 
