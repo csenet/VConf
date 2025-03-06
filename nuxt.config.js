@@ -4,6 +4,11 @@ export default {
 
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
+  
+  // Modern mode for better performance
+  modern: 'client',
+
+  bridge: true,
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -21,12 +26,13 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     // Load Bootstrap
-    '@/assets/css/bootstrap/5.0.0-beta1/css/bootstrap.min.css'
+    'bootstrap/dist/css/bootstrap.min.css'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    { src: '~/plugins/main.js' }
+    { src: '~/plugins/main.js' },
+    { src: '~/plugins/skyway-compat.js' }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -45,6 +51,11 @@ export default {
     '@nuxtjs/toast',
     'nuxt-fontawesome'
   ],
+  
+  // For better performance
+  performance: {
+    gzip: true
+  },
 
   toast: {
     position: 'top-right',
@@ -63,5 +74,18 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    // Transpile specific dependencies
+    transpile: [
+      'three',
+      '@pixiv/three-vrm'
+    ],
+    // Optimize chunks
+    optimization: {
+      splitChunks: {
+        chunks: 'all',
+        automaticNameDelimiter: '.',
+        name: undefined
+      }
+    }
   }
 };

@@ -2,7 +2,7 @@
   <div/>
 </template>
 <script>
-import Peer from 'skyway-js';
+import Peer from '~/plugins/skyway-compat';
 import { config } from '~/config.ts';
 
 export default {
@@ -11,8 +11,8 @@ export default {
   data: () => {
     return {
       roomName: '',
-      peer: '',
-      room: '',
+      peer: null,
+      room: null,
       displayStream: ''
     };
   },
@@ -21,6 +21,7 @@ export default {
       key: config.apiKey,
       debug: 3
     });
+    
     if (this.$nuxt.$route.query.room) {
       this.roomName = this.$nuxt.$route.query.room;
     }
@@ -42,16 +43,20 @@ export default {
       if (this.audioTrack > 0) {
         this.localStream.addTrack(this.audioTrack);
       }
+      
       this.room = this.peer.joinRoom(this.roomName, {
         mode: 'sfu',
         stream: this.localStream
       });
+      
       this.room.once('open', () => {
         this.$toast.show('入室しました');
       });
+      
       this.room.on('peerJoin', (peerId) => {
         this.$toast.show(peerId + 'が入室しました');
       });
+      
       this.room.on('stream', (stream) => {
         if (!this.$store.state.video.videoStreams.some(peer => peer.peerId === stream.peerId)) {
           this.$store.commit('video/addVideo', {
@@ -60,6 +65,7 @@ export default {
           });
         }
       });
+      
       this.room.on('peerLeave', (peerId) => {
         this.$toast.show(peerId + 'が退室しました');
         this.$store.commit('video/removeVideo', { id: peerId });
@@ -68,29 +74,36 @@ export default {
         }
       });
     },
+    
     async startMirror () {
       try {
         this.displayStream = await navigator.mediaDevices.getDisplayMedia();
-      } catch {
+      } catch (error) {
         alert('画面共有を開始できません');
+        return;
       }
+      
       // eslint-disable-next-line vue/no-mutating-props
       this.$store.commit('video/setBroadcastStream', this.displayStream);
-      // this.$emit('getStream', this.displayStream);
       this.$store.commit('video/setUserVideo', this.displayStream);
+      
       if (this.audioTrack !== -1) {
         this.localStream.addTrack(this.audioTrack);
       }
     },
+    
     mute () {
       this.localStream.getAudioTracks()[0].enabled = false;
     },
+    
     unmute () {
       this.localStream.getAudioTracks()[0].enabled = true;
     },
+    
     send (axis) {
       this.room.send(axis);
     },
+    
     close () {
       this.$store.commit('video/removeAllVideo');
       this.room.close();
