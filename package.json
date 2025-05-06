@@ -18,7 +18,7 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/toast": "^3.3.1",
     "@nuxtjs/vuetify": "^1.12.3",
-    "@pixiv/three-vrm": "^2.0.10",
+    "@pixiv/three-vrm": "^3.4.0",
     "@skyway-sdk/room": "^1.6.2",
     "@types/dotenv": "^8.2.3",
     "bootstrap": "^5.3.6",
