@@ -2952,10 +2952,10 @@
   dependencies:
     axios "^1.7.7"
 
-"@skyway-sdk/core@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/core/-/core-1.11.0.tgz#94d19f09f52980b66ca8b89d1164b70e316ba74e"
-  integrity sha512-/vF6zids5qAwulO/SMEvotO5hcwatb+gW70WweIrKHPfnRbXaGlbk2aJpxz4HWUfBDzsBCwuCcs7/nrHF7YiBw==
+"@skyway-sdk/core@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/core/-/core-1.12.0.tgz#c37c9c797665bfb16a5db4b5794eb3b405509861"
+  integrity sha512-iDN6mToDzHKS+YedCNzg00kxA2TMQXRg7NgBUnNDK41b9rGRcmVapg8hqS969T9JDlD7GeMhUcUkEnPDErWhOQ==
   dependencies:
     "@skyway-sdk/analytics-client" "^1.0.1"
     "@skyway-sdk/rtc-api-client" "^1.8.0"
@@ -2971,13 +2971,13 @@
   resolved "https://registry.yarnpkg.com/@skyway-sdk/model/-/model-1.0.1.tgz#f747e2fe03f10860adcbb3b1a06219afa46faa8a"
   integrity sha512-tMMptnun0r/jYsoSbFn6C468DtPlp51CLxvSbhzvVhhFIxhJsbE8F3DaW6Or5VSz5o8wjY2q/EyADGpjI0KUXA==
 
-"@skyway-sdk/room@^1.6.2":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/room/-/room-1.11.1.tgz#5c6902dcc6c128bb7321344705661fa597ed3419"
-  integrity sha512-6unK3/7AVKRORUJbbpKJkQ3EhT5t9O5LAt0f8W9UiO89qD+U225MWiLmvOx/5C001AV47ptWhD1cEnfhFt6gew==
+"@skyway-sdk/room@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/room/-/room-1.12.0.tgz#0d133ed284ce2aae4df46de7fa65e354faf9a4bd"
+  integrity sha512-44graRJbG6/LT/RXiMDCGoWEuXzQYcPCr2zl2qtJZT6kNKUQtBekjPx1EV4cjwlDgJycWBZP52KcST3ThlLMqQ==
   dependencies:
-    "@skyway-sdk/core" "^1.11.0"
-    "@skyway-sdk/sfu-bot" "^1.11.1"
+    "@skyway-sdk/core" "^1.12.0"
+    "@skyway-sdk/sfu-bot" "^1.12.0"
     uuid "^9.0.0"
 
 "@skyway-sdk/rtc-api-client@^1.8.0":
@@ -3008,12 +3008,12 @@
     "@skyway-sdk/common" "^1.4.8"
     mediasoup-client "^3.6.52"
 
-"@skyway-sdk/sfu-bot@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/sfu-bot/-/sfu-bot-1.11.1.tgz#48d532e5d8d6ca8edf1a6bf082629652fd7a69b6"
-  integrity sha512-1p9mKYoMBi0W2urcJpAY+i2uuoQt+9Zfog79u/rOtXxOaLX6K/aweOCiM8NUfRJgg2KMIHJXLtJKXkt+PpFTRg==
+"@skyway-sdk/sfu-bot@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/sfu-bot/-/sfu-bot-1.12.0.tgz#22705f6bd4dc608beb4318e4e807d891e73c9f6c"
+  integrity sha512-X3FxJjefwvJZICddMOnKVBDWqJcG9swRPtzBMhE5Jzf0QHHxqxaUbezWXNIa2XeKCh+HpFcH1uJI4GuoGJebPA==
   dependencies:
-    "@skyway-sdk/core" "^1.11.0"
+    "@skyway-sdk/core" "^1.12.0"
     "@skyway-sdk/sfu-api-client" "^1.4.8"
     lodash "4.17.21"
     mediasoup-client "3.8.1"
