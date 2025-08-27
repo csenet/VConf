@@ -28,7 +28,7 @@
     "nuxt-fontawesome": "^0.4.0",
     "punycode": "^2.3.1",
     "stats.js": "^0.17.0",
-    "three": "^0.161.0",
+    "three": "^0.179.1",
     "vue": "^2.7.16",
     "vue-js-modal": "^2.0.1"
   },
