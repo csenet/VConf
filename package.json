@@ -19,7 +19,7 @@
     "@nuxtjs/toast": "^3.3.1",
     "@nuxtjs/vuetify": "^1.12.3",
     "@pixiv/three-vrm": "^2.0.10",
-    "@skyway-sdk/room": "^1.6.2",
+    "@skyway-sdk/room": "^2.4.0",
     "@types/dotenv": "^8.2.3",
     "bootstrap": "^5.3.8",
     "clmtrackr": "^1.1.2",
