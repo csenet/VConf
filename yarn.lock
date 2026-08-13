@@ -2843,130 +2843,107 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/merge-streams/-/merge-streams-4.0.0.tgz#abb11d99aeb6d27f1b563c38147a72d50058e339"
   integrity sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==
 
-"@skyway-sdk/analytics-client@1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/analytics-client/-/analytics-client-1.1.1.tgz#9c981c4711456d3a19b1b22c8edabff380250c6b"
-  integrity sha512-kwoI1BebCM5b+09pLODjqO2jyBc2QKu8fcuLdzhQkla7ySBnDJGEVNxVMua0gzza4aH2Wn0bnGZU26zO0AQG2w==
+"@skyway-sdk/analytics-client@2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/analytics-client/-/analytics-client-2.0.5.tgz#f9c04b34ca725c71c1faf5a7f752cd742641ca66"
+  integrity sha512-ZapeTBdptQZLtFgBNC/dNpHK0Sli7c9MgnMQ5Trh0J+CmXdr5Vj3XRvfuJDhYQORPwknhvBdWS1yXG0xVa+Xzg==
   dependencies:
     isomorphic-ws "^4.0.1"
-    uuid "^9.0.0"
-    ws "^8.17.1"
+    ws "^8.20.1"
 
-"@skyway-sdk/common@1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/common/-/common-1.5.0.tgz#f5952c7faf899c3690e8fce5b8f67b4929234f27"
-  integrity sha512-oYHtWcBLVh098UkldKU87wZf6sdPqO+3ge+glpJMyVs2ZIuQF4b5uz50F/Lugv3G1Sc8UHNo5h5Vs9w6J4uQaQ==
+"@skyway-sdk/common@2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/common/-/common-2.0.6.tgz#74911bbddc68d0704035084b832729c712b666b3"
+  integrity sha512-jl0K6+D/c2N7P2f/v/CrhV20Vv+wYhZNLRxhbZ2jM0P02FebaE03ZuVdb2c/qcJdfnCHV2ff1/5/qSjKYhLs+A==
   dependencies:
-    axios "^1.7.7"
+    axios "^1.16.0"
 
-"@skyway-sdk/core@1.15.2":
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/core/-/core-1.15.2.tgz#84e2894f3c1078ad22dcbd55d6af0dd380bbde53"
-  integrity sha512-outcQBvbt8rJJF8xPSTao5Cz/qdioA0ncWeZXMsp4AyOKsu68b9TvFIZ7wR5oencPwRVJdL1uj46fTO0jU4h0w==
+"@skyway-sdk/core@2.5.1":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/core/-/core-2.5.1.tgz#6479369d63e2503fdc7f151634ff27c2ac405f09"
+  integrity sha512-pYhn31FeuJqp5CjW5HMWYDs0R36sVZAwxsS4MY9AezNSakKZAlwZ1HSvDE6+hpbw+67AFZbotj6WFvLf62xXXw==
   dependencies:
-    "@skyway-sdk/analytics-client" "1.1.1"
-    "@skyway-sdk/common" "1.5.0"
-    "@skyway-sdk/rtc-api-client" "1.8.4"
-    "@skyway-sdk/signaling-client" "1.0.9"
-    "@skyway-sdk/token" "1.7.4"
+    "@skyway-sdk/analytics-client" "2.0.5"
+    "@skyway-sdk/common" "2.0.6"
+    "@skyway-sdk/rtc-api-client" "2.2.5"
+    "@skyway-sdk/signaling-client" "2.0.4"
+    "@skyway-sdk/token" "2.1.5"
     bowser "^2.11.0"
     deepmerge "^4.3.1"
-    lodash "4.17.21"
+    lodash "4.18.1"
     sdp-transform "^2.14.2"
     ua-parser-js "^1.0.35"
-    uuid "^9.0.0"
 
-"@skyway-sdk/mediasoup-client@^3.15.2":
-  version "3.15.2"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/mediasoup-client/-/mediasoup-client-3.15.2.tgz#ddabba1e5300f3ea803983dd3812a802ab50dd80"
-  integrity sha512-0nNB6OPSU3aTKaoElJ0jI76gLYzkO96n8oExs94hd+b2bCBIpKznvzRxlmdZQH8T4fzLfeIU7AK3WROGr+iMQA==
+"@skyway-sdk/model@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/model/-/model-2.0.0.tgz#936f89ca8d3b894f08600a92fd783827b757b002"
+  integrity sha512-Ddhffe4Gq5+CL4UlnmI5+0YVcfQuGMh8v5wk8G/ai88WJfCUw5Uw2IgnSnf8YBaLLMoqKGe1nRntX3Gj20b39g==
+
+"@skyway-sdk/room@^2.0.0":
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/room/-/room-2.5.1.tgz#ca94f269a1f930d03277d77d76de003ae0d52bff"
+  integrity sha512-cgbS2fI/gpqIn/vUi8SrJSAulr+WRbUuVOwCa3/F0BENzKSFP7nz1uLX0cn1KuRksQVu+6fRU24RLiFMpKDhpA==
   dependencies:
-    "@types/debug" "^4.1.12"
-    "@types/events-alias" "npm:@types/events@^3.0.3"
-    awaitqueue "^3.2.4"
-    debug "^4.4.1"
-    events-alias "npm:events@^3.3.0"
-    fake-mediastreamtrack "^2.1.2"
-    h264-profile-level-id "^2.2.3"
-    sdp-transform "^2.15.0"
-    supports-color "^10.1.0"
-    ua-parser-js "^1.0.40"
+    "@skyway-sdk/common" "2.0.6"
+    "@skyway-sdk/core" "2.5.1"
+    "@skyway-sdk/sfu-bot" "2.2.8"
+    "@skyway-sdk/token" "2.1.5"
 
-"@skyway-sdk/model@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/model/-/model-1.0.3.tgz#dc635794e69efbcc270a0fec5dee7b3e105c8739"
-  integrity sha512-1sFnOY9phuO+v6f9HVeMCSRxHSkPRi2JdQVwUhqW0ArGwmBqUK+jIfU7qXGbRiuE0vxosBu+gDlMK0pw40ehSQ==
-
-"@skyway-sdk/room@^1.6.2":
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/room/-/room-1.15.2.tgz#aa38ff88a6afb2f6670db8bd7c54b31bbb60836f"
-  integrity sha512-u1RKzQr46NLkS4FxWauw+W8XO2nXxBPTQ7jdtxGqN5vHVh3uNcC0y3TJiHFVW44H7LVC+rr8cl4lzgvdez17EQ==
+"@skyway-sdk/rtc-api-client@2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/rtc-api-client/-/rtc-api-client-2.2.5.tgz#d9e690b88b13ef815fc93c692da8845c5cce7026"
+  integrity sha512-O1gIhY2F16PL3a+X4JAxNMkndJuE411JFYVVrj/TZySzAgaVrblIsl44CYwWHRN2TKFy0PtVDfV6gXvrr/T+UQ==
   dependencies:
-    "@skyway-sdk/common" "1.5.0"
-    "@skyway-sdk/core" "1.15.2"
-    "@skyway-sdk/sfu-bot" "1.14.3"
-    "@skyway-sdk/token" "1.7.4"
-    uuid "^9.0.0"
-
-"@skyway-sdk/rtc-api-client@1.8.4":
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/rtc-api-client/-/rtc-api-client-1.8.4.tgz#914f8b85ef68743520162508fee55562588efa2c"
-  integrity sha512-TMdpUvE7L9AAAVQV1mzl3Jp+NDF/rSnqGIghnk0G0G7R0YTXN3xRXywOecdUHVYmZiM17djtn9LhpDe1wWAyrA==
-  dependencies:
-    "@skyway-sdk/common" "1.5.0"
-    "@skyway-sdk/rtc-rpc-api-client" "1.8.3"
-    "@skyway-sdk/token" "1.7.4"
+    "@skyway-sdk/common" "2.0.6"
+    "@skyway-sdk/rtc-rpc-api-client" "2.1.5"
+    "@skyway-sdk/token" "2.1.5"
     deepmerge "^4.3.1"
-    uuid "^9.0.0"
 
-"@skyway-sdk/rtc-rpc-api-client@1.8.3":
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/rtc-rpc-api-client/-/rtc-rpc-api-client-1.8.3.tgz#cb1b3cb6779636e8c2dbd580cfb2c0007122af73"
-  integrity sha512-LdZGk1G8YK8BzEicl+nPUdGStULXxTRQF2s3VUPYrxRKJuWePLOAbnpO5bwvkEwQLpu5o8PNVyOA7N05/0O2gQ==
+"@skyway-sdk/rtc-rpc-api-client@2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/rtc-rpc-api-client/-/rtc-rpc-api-client-2.1.5.tgz#2929c7b3f23ba0d143e0309d89314cfb09eced41"
+  integrity sha512-iXYf2gprY9+WhxPBOrgfTeH3fyp4NlyhW/BzvuSzTUTtltNss6dgFRoko63Yl74IwWsGFVj3eLv3mC0D+T3ilw==
   dependencies:
-    "@skyway-sdk/common" "1.5.0"
-    "@skyway-sdk/model" "1.0.3"
+    "@skyway-sdk/common" "2.0.6"
+    "@skyway-sdk/model" "2.0.0"
     isomorphic-ws "^4.0.1"
-    uuid "^9.0.0"
 
-"@skyway-sdk/sfu-api-client@1.5.4":
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/sfu-api-client/-/sfu-api-client-1.5.4.tgz#c5d9a5030b5c29f3c98e6e096e49976fe73c1ccb"
-  integrity sha512-o1wRIBu+GvSXKA7HOT2GVGPW6G6AALy0wvNEqG/Atb/cyibFwp7pAzmh7aYC6LZMKiJtobm/6nVx/Pt6JfZ0/A==
+"@skyway-sdk/sfu-api-client@2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/sfu-api-client/-/sfu-api-client-2.0.6.tgz#9594b42218f8ad8d95b5ce88ff9b5214a67cafcd"
+  integrity sha512-g29WvFGFDE0dnbevgvlcucuKvhbKM1wazcqbTuTOKkbXwCTaE8388vQoariGaPL/dMh+wyLREB+DvNftyUbqvg==
   dependencies:
-    "@skyway-sdk/common" "1.5.0"
-    "@skyway-sdk/mediasoup-client" "^3.15.2"
+    "@skyway-sdk/common" "2.0.6"
+    mediasoup-client "^3.18.3"
 
-"@skyway-sdk/sfu-bot@1.14.3":
-  version "1.14.3"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/sfu-bot/-/sfu-bot-1.14.3.tgz#44ead8dac13065286662aebf54f94d4ea0baef1c"
-  integrity sha512-YJby+s7jNig7RAR+reCV2RGWnZVoHfKyGXLgjvZyqTzX8jya5j/nRMo8n1bT9BkzbACwMgpx1NSDvt5xqDkb+w==
+"@skyway-sdk/sfu-bot@2.2.8":
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/sfu-bot/-/sfu-bot-2.2.8.tgz#296e33a21e12a654bd382f648db4c8ce33a9d809"
+  integrity sha512-brXtYE2VhQp+5T0zliZpzg49aHrhtxL6iGW1cG9HA3f3K3caPZGslWY4N7PXo7WLXKclO4UQ9WH8s+SWWwufnQ==
   dependencies:
-    "@skyway-sdk/common" "1.5.0"
-    "@skyway-sdk/core" "1.15.2"
-    "@skyway-sdk/mediasoup-client" "^3.15.2"
-    "@skyway-sdk/sfu-api-client" "1.5.4"
-    lodash "4.17.21"
+    "@skyway-sdk/common" "2.0.6"
+    "@skyway-sdk/core" "2.5.1"
+    "@skyway-sdk/sfu-api-client" "2.0.6"
+    lodash "4.18.1"
+    mediasoup-client "^3.18.3"
 
-"@skyway-sdk/signaling-client@1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/signaling-client/-/signaling-client-1.0.9.tgz#00cd3bff3b255fd5b96e74a2f6d7f282ff8476cf"
-  integrity sha512-8MZRgXOtsP9qDLthgPf6ugL2cAQLf3eWi3DIKy6dVFmWt+RtHQmRMtf2RdFK+t8XhSnOPeL+zqlnoISFG+FWTw==
+"@skyway-sdk/signaling-client@2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/signaling-client/-/signaling-client-2.0.4.tgz#0c7506be0ab767aff82309f12332e125f69ed0d3"
+  integrity sha512-fplL2Jy175XOd23siq8qB9svCnaCpOeUL+JRGHSe37h8EDAoEmofVOJkeAhmY9xaX3C2Xm3quzLmZf4AewOOXQ==
   dependencies:
     isomorphic-fetch "^3.0.0"
     isomorphic-ws "^4.0.1"
-    uuid "^9.0.0"
-    ws "^8.17.1"
+    ws "^8.20.1"
 
-"@skyway-sdk/token@1.7.4":
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/@skyway-sdk/token/-/token-1.7.4.tgz#5667a85880b30ef3bbb18242e05cf199ed7dde86"
-  integrity sha512-hFExP7hmtPsitKUg8Lm+PRlEeNKO6/XiM1jtFQIZkjH+UWBHr98mwIG1CanvMdI31IpUWej+V6zYPRrpRnEbYA==
+"@skyway-sdk/token@2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@skyway-sdk/token/-/token-2.1.5.tgz#7561fabc3f39d221c5101c91e962da12246ef40c"
+  integrity sha512-pzoP8v4w85+Q6m4bWQAcSXnHu/2R4BQm+5j2O9OIy8HSRNtZL7+ptIfFfBAH4zkwB4KCwArajQNyuGzrQdeD/Q==
   dependencies:
-    "@skyway-sdk/common" "1.5.0"
-    jsrsasign "^11.1.0"
+    "@skyway-sdk/common" "2.0.6"
+    jsrsasign "^11.1.1"
     jwt-decode "3.1.2"
-    uuid "^9.0.0"
     zod "^3.24.1"
     zod-validation-error "^3.4.0"
 
@@ -3030,7 +3007,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/debug@^4.1.12":
+"@types/debug@^4.1.13":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.13.tgz#22d1cc9d542d3593caea764f974306ab36286ee7"
   integrity sha512-KSVgmQmzMwPlmtljOomayoR89W4FynCAi3E8PPs7vmDVPe84hT+vGPKkJfThkmXs0x0jAaa9U8uW8bbfyS2fWw==
@@ -3840,14 +3817,14 @@ autoprefixer@^10.4.21, autoprefixer@^10.5.4:
     picocolors "^1.1.1"
     postcss-value-parser "^4.2.0"
 
-awaitqueue@^3.2.4:
+awaitqueue@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/awaitqueue/-/awaitqueue-3.3.1.tgz#3efed961ee080483b4657ef1953cb246fd306c9b"
   integrity sha512-kzMN6Bdfalok/JWZvwDfI704cIyCvHDi6Ez/bApGzNPjGHQhwJ07DzGd3DDzeXH2fjr9P5g8paESFUvYnbs7rA==
   dependencies:
     debug "^4.4.3"
 
-axios@^1.7.7:
+axios@^1.16.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.19.0.tgz#ddf864d4c8233c0e6873746ab59361537d05ad39"
   integrity sha512-ht/iuYZXEjFxLH/Hkezgd7m6JKlHHXEUSneaDz8uZe1Gj5QZtCnpyDsckvAiEnT89OEbCLmnte4R4sn7P0EKFw==
@@ -5462,7 +5439,7 @@ externality@^1.0.2:
     pathe "^1.1.1"
     ufo "^1.1.2"
 
-fake-mediastreamtrack@^2.1.2:
+fake-mediastreamtrack@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/fake-mediastreamtrack/-/fake-mediastreamtrack-2.2.1.tgz#49a36b4d58fadb7b450eafe96bdfd9173a1c6252"
   integrity sha512-SITLc7UTDirSdgLGORrlmqjWLJtbtfIz/xO7DwVbJH3f0ds+NQok4ccl/WEzz49NSgiUlXf2wDW0+y5C+TO6EA==
@@ -5935,7 +5912,7 @@ gzip-size@^7.0.0:
   dependencies:
     duplexer "^0.1.2"
 
-h264-profile-level-id@^2.2.3:
+h264-profile-level-id@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/h264-profile-level-id/-/h264-profile-level-id-2.3.3.tgz#1206e6c1a536a49e8b14b51ab147255a1e44695c"
   integrity sha512-rPd5gpyWuIfEbBiHC/f9I4wdeCpAhg0aWdYgjMRdVTqhJT22C6VrWTi4hpAAgJad1Vv8BJDEvrzAQTW7CxzmJw==
@@ -6561,7 +6538,7 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-jsrsasign@^11.1.0:
+jsrsasign@^11.1.1:
   version "11.1.3"
   resolved "https://registry.yarnpkg.com/jsrsasign/-/jsrsasign-11.1.3.tgz#4e02daeca66b711077c076b1790dcd9568d48789"
   integrity sha512-nPnK5D/4lv0Dwr7TlzrKtAd8JlLZwFTqTUUB3NQCbtdobcRcohGFxjbPySDVh74iWUudcCsapYT6OxoyhJLhhA==
@@ -6739,15 +6716,15 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==
 
-lodash@4.17.21, lodash@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
-
-lodash@^4.17.15:
+lodash@4.18.1, lodash@^4.17.15:
   version "4.18.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.18.1.tgz#ff2b66c1f6326d59513de2407bf881439812771c"
   integrity sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 lru-cache@^10.2.0:
   version "10.4.3"
@@ -6810,6 +6787,21 @@ mdn-data@2.27.1:
   version "2.27.1"
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.27.1.tgz#e37b9c50880b75366c4d40ac63d9bbcacdb61f0e"
   integrity sha512-9Yubnt3e8A0OKwxYSXyhLymGW4sCufcLG6VdiDdUGVkPhpqLxlvP5vl1983gQjJl3tqbrM731mjaZaP68AgosQ==
+
+mediasoup-client@^3.18.3:
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/mediasoup-client/-/mediasoup-client-3.21.0.tgz#bc75c4ff4f68f2a5641e1d817ef1c04b24a82a21"
+  integrity sha512-KRpq0gqstqkeyjB3ykypM2u+pCdSQueB5Q2y8GDOPCNZYsKSRpYlmVR/GTVErKfe5wYtpnTZ1F+XSQkuAFmYyw==
+  dependencies:
+    "@types/debug" "^4.1.13"
+    "@types/events-alias" "npm:@types/events@^3.0.3"
+    awaitqueue "^3.3.1"
+    debug "^4.4.3"
+    events-alias "npm:events@^3.3.0"
+    fake-mediastreamtrack "^2.2.1"
+    h264-profile-level-id "^2.3.3"
+    sdp-transform "^3.0.0"
+    supports-color "^10.2.2"
 
 memory-fs@^0.5.0:
   version "0.5.0"
@@ -8451,10 +8443,15 @@ scule@^1.3.0:
   resolved "https://registry.yarnpkg.com/scule/-/scule-1.3.0.tgz#6efbd22fd0bb801bdcc585c89266a7d2daa8fbd3"
   integrity sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g==
 
-sdp-transform@^2.14.2, sdp-transform@^2.15.0:
+sdp-transform@^2.14.2:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-2.15.0.tgz#79d37a2481916f36a0534e07b32ceaa87f71df42"
   integrity sha512-KrOH82c/W+GYQ0LHqtr3caRpM3ITglq3ljGUIb8LTki7ByacJZ9z+piSGiwZDsRyhQbYBOBJgr2k6X4BZXi3Kw==
+
+sdp-transform@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/sdp-transform/-/sdp-transform-3.0.0.tgz#863dd2d781c468d7d6a2f9c70fedcf0538f3e76c"
+  integrity sha512-gfYVRGxjHkGF2NPeUWHw5u6T/KGFtS5/drPms73gaSuMaVHKCY3lpLnGDfswVQO0kddeePoti09AwhYP4zA8dQ==
 
 "semver@2 || 3 || 4 || 5":
   version "5.7.2"
@@ -8893,7 +8890,7 @@ stylehacks@^7.0.11:
     browserslist "^4.28.2"
     postcss-selector-parser "^7.1.1"
 
-supports-color@^10.0.0, supports-color@^10.1.0:
+supports-color@^10.0.0, supports-color@^10.2.2:
   version "10.2.2"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-10.2.2.tgz#466c2978cc5cd0052d542a0b576461c2b802ebb4"
   integrity sha512-SS+jx45GF1QjgEXQx4NJZV9ImqmO2NPz5FNsIHrsDjh2YsHnawpan7SNQ1o8NuhrbHZy9AZhIoCUiCeaW/C80g==
@@ -9130,7 +9127,7 @@ type-fest@^5.0.0:
   dependencies:
     tagged-tag "^1.0.0"
 
-ua-parser-js@^1.0.35, ua-parser-js@^1.0.40:
+ua-parser-js@^1.0.35:
   version "1.0.41"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.41.tgz#bd04dc9ec830fcf9e4fad35cf22dcedd2e3b4e9c"
   integrity sha512-LbBDqdIC5s8iROCUjMbW1f5dJQTEFB1+KO9ogbvlb3nm9n4YHa5p4KTvFPWvh2Hs8gZMBuiB1/8+pdfe/tDPug==
@@ -9487,11 +9484,6 @@ util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-uuid@^9.0.0:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.1.tgz#e188d4c8853cc722220392c424cd637f32293f30"
-  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
-
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/validate-npm-package-license/-/validate-npm-package-license-3.0.4.tgz#fc91f6b9c7ba15c857f4cb2c5defeec39d4f410a"
@@ -9777,7 +9769,7 @@ wrap-ansi@^9.0.0:
     string-width "^7.0.0"
     strip-ansi "^7.1.0"
 
-ws@^8.17.1, ws@^8.21.1:
+ws@^8.20.1, ws@^8.21.1:
   version "8.21.3"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.21.3.tgz#660b4faddb6a3e575c86e078126919961f4de4fc"
   integrity sha512-201TZ/kPWxoPr/OKWjquZR1SWKXcvxdH+e1xrx89b3YbmzLMFCLfnaG1HFIgWzJOEWZ7MvpK++odZufgYR50Rw==
